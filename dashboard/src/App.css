@@ -1,0 +1,16 @@
+.App {
+  text-align: left; /* Align text to the left */
+  background-color: #000000; /* Dark background */
+  color: #ffffff; /* Light text color */
+  height: 100vh; /* Full height */
+  display: flex; /* Use flexbox for layout */
+  align-items: flex-start; /* Align items to the top */
+  justify-content: flex-start; /* Align items to the left */
+  padding: 0px; /* Add padding to the container */
+}
+
+.App-logo {
+  width: 200px; /* Increase size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0; /* Add margin for spacing */
+}
