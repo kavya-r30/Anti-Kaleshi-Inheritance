@@ -13,11 +13,10 @@
 
 /* "Never Ending Box" Loader styles */
 #loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -2.7em;
-  margin-left: -2.7em;
+  position: absolute; /* Ensure absolute positioning to center it */
+  top: 50%; /* Move the loader vertically to the center */
+  left: 48%; /* Move the loader horizontally to the center */
+  transform: translate(-50%, -50%); /* Adjust the position to exactly center */
   width: 5.4em;
   height: 5.4em;
   background-color: #000000; /* Increased duration to allow 3 cycles of box animation */

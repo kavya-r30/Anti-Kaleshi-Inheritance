@@ -11,12 +11,12 @@ function App() {
     // Simulate loading for 7.8 seconds before fading out
     const timer = setTimeout(() => {
       setIsFadingOut(true); // Start the fade-out animation
-    }, 5200); // 7.8 seconds for loader to show
+    }, 5300); // 7.8 seconds for loader to show
 
     // Remove loader after fade-out animation completes
     const removeTimer = setTimeout(() => {
       setIsLoading(false); // After fading out, hide the loader
-    }, 5200); // Delay to match the fade-out transition duration
+    }, 5300); // Delay to match the fade-out transition duration
 
     return () => {
       clearTimeout(timer);
