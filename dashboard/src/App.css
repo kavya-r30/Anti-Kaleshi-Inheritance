@@ -4,13 +4,46 @@
   color: #ffffff; /* Light text color */
   height: 100vh; /* Full height */
   display: flex; /* Use flexbox for layout */
-  align-items: flex-start; /* Align items to the top */
-  justify-content: flex-start; /* Align items to the left */
-  padding: 0px; /* Add padding to the container */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  padding: 10px; /* Add padding to the container */
+  overflow: hidden; /* Hide anything that overflows during animation */
+  transition: opacity 1.2s ease-in-out; /* Smooth transition for opacity */
+}
+
+.App.fade-out {
+  opacity: 0; /* Fade out */
+  transform: scale(1.1); /* Slight zoom-out effect (without rotation) */
+}
+
+.App.fade-in {
+  opacity: 1; /* Fade in */
+  transform: scale(1); /* Normal size (no rotation) */
 }
 
 .App-logo {
-  width: 200px; /* Increase size of the logo */
+  width: 170px; /* Increase size of the logo */
   height: auto; /* Maintain aspect ratio */
   margin: 0; /* Add margin for spacing */
+  position: absolute; /* Position logo absolutely within the container */
+  top: 10px; /* Align logo to the top of the page */
+  left: 10px; /* Align logo to the left of the page */
+  animation: zoomIn 1s ease-in-out; /* Add zoom-in effect to the logo */
+}
+
+.App-logo:hover {
+  transform: scale(1.1); /* Increase size only, no rotation */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Keyframes for logo zoom-in animation */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8); /* Start from a smaller size */
+    opacity: 0; /* Start with invisible logo */
+  }
+  100% {
+    transform: scale(1); /* End with normal size */
+    opacity: 1; /* Logo becomes fully visible */
+  }
 }
