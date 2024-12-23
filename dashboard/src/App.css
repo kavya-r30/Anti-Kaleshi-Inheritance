@@ -12,31 +12,4 @@
   position: relative; /* Position relative for loader to work */
 }
 
-/* Other CSS styles for the logo */
-.App-logo {
-  width: 170px; /* Increase size of the logo */
-  height: 53px; /* Maintain aspect ratio */
-  margin: 0; /* Add margin for spacing */
-  position: absolute; /* Position logo absolutely within the container */
-  top: 4px; /* Align logo to the top of the page */
-  left: 10px; /* Align logo to the left of the page */
-  animation: zoomIn 1s ease-in-out; /* Add zoom-in effect to the logo */
-  border-radius: 8px;
-}
-
-.App-logo:hover {
-  transform: scale(1.1); /* Increase size only, no rotation */
-  transition: transform 0.3s ease-in-out;
-}
-
-/* Keyframes for logo zoom-in animation */
-@keyframes zoomIn {
-  0% {
-    transform: scale(0.8); /* Start from a smaller size */
-    opacity: 0; /* Start with invisible logo */
-  }
-  100% {
-    transform: scale(1); /* End with normal size */
-    opacity: 1; /* Logo becomes fully visible */
-  }
-}
+/* Remove the logo styling from App.css */

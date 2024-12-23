@@ -1,10 +1,15 @@
-// src/components/Navbar.js
 import React from "react";
-import "./Navbar.css"; // Import the CSS file for the navbar styling
+import logo from "../assets/logo.png"; // Ensure the logo path is correct
+import "./Navbar.css"; // Import the CSS file for navbar styling
 
 const Navbar = () => {
   return (
     <nav className="navbar">
+      <div className="logo-container">
+        <a href="/">
+          <img src={logo} alt="Logo" className="navbar-logo" />
+        </a>
+      </div>
       <ul className="navbar-links">
         <li className="navbar-item">
           <a href="/dashboard" className="navbar-link">

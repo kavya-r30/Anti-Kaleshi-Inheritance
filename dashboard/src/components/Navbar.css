@@ -7,11 +7,38 @@
   height: 60px; /* Height of the navbar */
   background-color: #000000; /* Background color */
   display: flex;
-  justify-content: flex-end; /* Align navbar content to the right */
+  justify-content: space-between; /* Space out the logo and links */
   align-items: center;
   padding: 0 20px; /* Padding for navbar content */
   box-sizing: border-box; /* Include padding and borders in the width/height calculation */
   z-index: 0; /* Ensure navbar stays behind logo */
+}
+
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center; /* Center the logo vertically */
+}
+
+.navbar-logo {
+  width: 140px; /* Adjust the size of the logo */
+  height: 56px; /* Maintain the aspect ratio of the logo */
+  padding-top: 8px;
+  margin-right: 20px; /* Add space between the logo and navbar links */
+  animation: zoomIn 1s ease-in-out; /* Add zoom-in effect to the logo */
+  border-radius: 8px;
+}
+
+/* Keyframes for logo zoom-in animation */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8); /* Start from a smaller size */
+    opacity: 0; /* Start with invisible logo */
+  }
+  100% {
+    transform: scale(1); /* End with normal size */
+    opacity: 1; /* Logo becomes fully visible */
+  }
 }
 
 /* Navbar links list */
@@ -31,7 +58,7 @@
 .navbar-link {
   text-decoration: none;
   color: #ffffff; /* Text color */
-  background-color: #000000; /* Light grey background */
+  background-color: #000000; /* Background color */
   font-size: 22px; /* Font size */
   font-weight: 600;
   padding: 8px 25px; /* Reduced padding to reduce box height */

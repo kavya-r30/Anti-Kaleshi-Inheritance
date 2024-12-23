@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import logo from "./assets/logo.png"; // Ensure the path is correct
 import Loader from "./components/Loader"; // Import the Loader component
 import Navbar from "./components/Navbar"; // Import the Navbar component
 
@@ -27,9 +26,7 @@ function App() {
           {/* Render Navbar component */}
           <Navbar />
           <header className="App-header">
-            <a href="/">
-              <img src={logo} alt="Logo" className="App-logo" />
-            </a>
+            {/* Removed logo since it's now part of the Navbar */}
           </header>
         </>
       )}
