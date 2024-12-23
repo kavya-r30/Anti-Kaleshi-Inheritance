@@ -12,12 +12,26 @@
   padding: 0 20px; /* Padding for navbar content */
   box-sizing: border-box; /* Include padding and borders in the width/height calculation */
   z-index: 0; /* Ensure navbar stays behind logo */
+  opacity: 0; /* Initially hide the navbar */
+  animation: fadeIn 1s forwards; /* Apply fadeIn animation */
+}
+
+/* Keyframes for fading in the navbar */
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Initially hidden */
+  }
+  100% {
+    opacity: 1; /* Fully visible */
+  }
 }
 
 /* Logo container */
 .logo-container {
   display: flex;
   align-items: center; /* Center the logo vertically */
+  opacity: 0; /* Initially hide the logo */
+  animation: fadeIn 1s forwards; /* Apply fade-in with the same timing as navbar */
 }
 
 .navbar-logo {
@@ -27,6 +41,7 @@
   margin-right: 20px; /* Add space between the logo and navbar links */
   animation: zoomIn 1s ease-in-out; /* Add zoom-in effect to the logo */
   border-radius: 8px;
+  transition: transform 1s ease-in-out, opacity 1s ease; /* Apply transition to the logo */
 }
 
 /* Keyframes for logo zoom-in animation */
@@ -46,12 +61,16 @@
   list-style: none;
   display: flex;
   margin: 0;
-  padding: 0;
+  padding-right: 20px;
+  opacity: 0; /* Initially hide the navbar links */
+  animation: fadeIn 1s forwards; /* Apply fade-in with the same timing as navbar */
 }
 
 /* Each navbar item */
 .navbar-item {
-  margin: 0 17px; /* Space between buttons */
+  margin: 0 30px; /* Space between buttons */
+  opacity: 0; /* Initially hide navbar items */
+  animation: fadeIn 1s forwards; /* Apply fade-in with the same timing as navbar */
 }
 
 /* Navbar link style */
