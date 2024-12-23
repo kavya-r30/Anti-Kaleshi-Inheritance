@@ -1,6 +1,7 @@
+/* src/App.css */
 .App {
   text-align: left; /* Align text to the left */
-  background-color: #000000; /* Dark background */
+  background-color: #2c00dc; /* Dark background */
   color: #ffffff; /* Light text color */
   height: 100vh; /* Full height */
   display: flex; /* Use flexbox for layout */
@@ -14,12 +15,13 @@
 /* Other CSS styles for the logo */
 .App-logo {
   width: 170px; /* Increase size of the logo */
-  height: auto; /* Maintain aspect ratio */
+  height: 53px; /* Maintain aspect ratio */
   margin: 0; /* Add margin for spacing */
   position: absolute; /* Position logo absolutely within the container */
-  top: 10px; /* Align logo to the top of the page */
+  top: 4px; /* Align logo to the top of the page */
   left: 10px; /* Align logo to the left of the page */
   animation: zoomIn 1s ease-in-out; /* Add zoom-in effect to the logo */
+  border-radius: 8px;
 }
 
 .App-logo:hover {

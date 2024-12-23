@@ -6,7 +6,7 @@
   transform: translate(-50%, -50%); /* Adjust the position to exactly center */
   width: 5.4em;
   height: 5.4em;
-  background-color: #000000; /* Increased duration to allow 3 cycles of box animation */
+  background-color: #2c00dc; /* Increased duration to allow 3 cycles of box animation */
   opacity: 1; /* Initial opacity */
   transition: opacity 2s ease-out; /* Smooth fade-out transition */
 }
@@ -18,7 +18,7 @@
   top: 1.7em;
   left: 1.7em;
   background-color: transparent;
-  border-left: 0.25em solid whitesmoke;
+  border-left: 0.25em solid rgb(0, 0, 0);
   transform: rotate(45deg);
 }
 
@@ -28,7 +28,7 @@
   width: 7.1em;
   height: 7.1em;
   left: 0;
-  background-color: #000000;
+  background-color: #2c00dc;
 }
 
 #box {
@@ -38,7 +38,7 @@
   width: 1em;
   height: 1em;
   background-color: transparent;
-  border: 0.25em solid whitesmoke;
+  border: 0.25em solid rgb(0, 0, 0);
   border-radius: 15%;
   transform: translate(0, -1em) rotate(-45deg);
   animation: push 1.5s cubic-bezier(0.79, 0, 0.47, 0.97) infinite; /* Adjusted to 3s for 3 cycles */
