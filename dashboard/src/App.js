@@ -1,37 +1,26 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.png"; // Ensure the path is correct
+import Loader from "./components/Loader"; // Import the Loader component
 
 function App() {
   // State to control loader visibility
   const [isLoading, setIsLoading] = useState(true);
-  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
     // Simulate loading for 7.8 seconds before fading out
     const timer = setTimeout(() => {
-      setIsFadingOut(true); // Start the fade-out animation
-    }, 5300); // 7.8 seconds for loader to show
-
-    // Remove loader after fade-out animation completes
-    const removeTimer = setTimeout(() => {
       setIsLoading(false); // After fading out, hide the loader
-    }, 5300); // Delay to match the fade-out transition duration
+    }, 4900); // 7.8 seconds for loader to show
 
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(removeTimer);
-    };
+    return () => clearTimeout(timer); // Clean up the timer on component unmount
   }, []);
 
   return (
     <div className="App">
       {/* Conditionally render loader based on isLoading state */}
       {isLoading ? (
-        <div id="loader" className={isFadingOut ? "fadeOut" : ""}>
-          <div id="box"></div>
-          <div id="hill"></div>
-        </div>
+        <Loader /> // Use the Loader component
       ) : (
         <header className="App-header">
           <a href="/">
