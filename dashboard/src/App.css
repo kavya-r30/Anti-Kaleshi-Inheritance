@@ -8,19 +8,82 @@
   justify-content: center; /* Center items horizontally */
   padding: 10px; /* Add padding to the container */
   overflow: hidden; /* Hide anything that overflows during animation */
-  transition: opacity 1.2s ease-in-out; /* Smooth transition for opacity */
+  position: relative; /* Position relative for loader to work */
 }
 
-.App.fade-out {
-  opacity: 0; /* Fade out */
-  transform: scale(1.1); /* Slight zoom-out effect (without rotation) */
+/* "Never Ending Box" Loader styles */
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2.7em;
+  margin-left: -2.7em;
+  width: 5.4em;
+  height: 5.4em;
+  background-color: #000000; /* Increased duration to allow 3 cycles of box animation */
+  opacity: 1; /* Initial opacity */
+  transition: opacity 2s ease-out; /* Smooth fade-out transition */
 }
 
-.App.fade-in {
-  opacity: 1; /* Fade in */
-  transform: scale(1); /* Normal size (no rotation) */
+#hill {
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  top: 1.7em;
+  left: 1.7em;
+  background-color: transparent;
+  border-left: 0.25em solid whitesmoke;
+  transform: rotate(45deg);
 }
 
+#hill:after {
+  content: "";
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  left: 0;
+  background-color: #000000;
+}
+
+#box {
+  position: absolute;
+  left: 0;
+  bottom: -0.1em;
+  width: 1em;
+  height: 1em;
+  background-color: transparent;
+  border: 0.25em solid whitesmoke;
+  border-radius: 15%;
+  transform: translate(0, -1em) rotate(-45deg);
+  animation: push 2.5s cubic-bezier(0.79, 0, 0.47, 0.97) infinite; /* Adjusted to 3s for 3 cycles */
+}
+
+@keyframes push {
+  0% {
+    transform: translate(0, -1em) rotate(-45deg); /* Starting position */
+  }
+  25% {
+    transform: translate(1em, -2em) rotate(47deg); /* First move up */
+  }
+  50% {
+    transform: translate(2em, -3em) rotate(137deg); /* Second move up */
+  }
+  75% {
+    transform: translate(3em, -4em) rotate(217deg); /* Peak at the hill */
+  }
+  100% {
+    transform: translate(0, -1em) rotate(-225deg); /* Return back down to starting position */
+  }
+}
+
+/* Fade out the loader when the state changes */
+.fadeOut {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction with the loader */
+  transition: opacity 2s ease-out; /* Smooth fade-out */
+}
+
+/* Other CSS styles for the logo */
 .App-logo {
   width: 170px; /* Increase size of the logo */
   height: auto; /* Maintain aspect ratio */
