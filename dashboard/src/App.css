@@ -1,7 +1,17 @@
 /* src/App.css */
 .App {
   text-align: left; /* Align text to the left */
-  background-color: #ffffff; /* Dark background */
+  background: radial-gradient(
+    circle at 50% 50%,
+    #0b0991,
+    #000f82,
+    #001172,
+    #001262,
+    #001152,
+    #000e43,
+    #020933,
+    #020424
+  );
   color: #ffffff; /* Light text color */
   height: 100vh; /* Full height */
   display: flex; /* Use flexbox for layout */
@@ -11,5 +21,3 @@
   overflow: hidden; /* Hide anything that overflows during animation */
   position: relative; /* Position relative for loader to work */
 }
-
-/* Remove the logo styling from App.css */
