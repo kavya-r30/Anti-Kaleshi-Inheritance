@@ -6,27 +6,16 @@
   font-family: "Poppins", sans-serif;
 }
 
-select:focus,
-input:focus,
-button:focus {
-  outline: none;
-}
-
-/* -------- BODY DISPLAY --------- */
-body {
-  background-color: #222;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-/* -------- CLASS --------- */
 .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: calc(100vh - 70px); /* Adjust height to account for Navbar */
 }
 
 .box {
@@ -60,7 +49,7 @@ i {
 }
 
 i:nth-child(1) {
-  color: #5c5fc4;
+  color: #9af5ff;
 }
 
 i:nth-child(2) {

@@ -1,33 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Loader from "./components/Loader"; // Import the Loader component
-import Navbar from "./components/Navbar"; // Import the Navbar component
+import Loader from "./components/Loader"; // Existing Loader component
+import Navbar from "./components/Navbar"; // Navbar component
+import Animation from "./components/Animation"; // New Animation component
 
 function App() {
-  // State to control loader visibility
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading for 7.8 seconds before fading out
     const timer = setTimeout(() => {
-      setIsLoading(false); // After fading out, hide the loader
-    }, 4900); // 7.8 seconds for loader to show
+      setIsLoading(false);
+    }, 4900);
 
-    return () => clearTimeout(timer); // Clean up the timer on component unmount
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="App">
-      {/* Conditionally render loader based on isLoading state */}
       {isLoading ? (
-        <Loader /> // Use the Loader component
+        <Loader />
       ) : (
         <>
-          {/* Render Navbar component */}
           <Navbar />
-          <header className="App-header">
-            {/* Removed logo since it's now part of the Navbar */}
-          </header>
+          <Animation />
         </>
       )}
     </div>
