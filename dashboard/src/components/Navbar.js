@@ -11,11 +11,15 @@ const Navbar = () => {
         </a>
       </div>
       <ul className="navbar-links">
-        <li className="navbar-item">
-          <a href="/dashboard" className="navbar-link">
-            Dashboard
-          </a>
-        </li>
+        {/* Center the Dashboard link */}
+        <div className="centered-link">
+          <li className="navbar-item">
+            <a href="/dashboard" className="navbar-link">
+              Dashboard
+            </a>
+          </li>
+        </div>
+        {/* Other links remain as they are */}
         <li className="navbar-item">
           <a href="/login" className="navbar-link">
             Login

@@ -1,58 +1,56 @@
 /* Navbar Styling */
 .navbar {
   position: fixed; /* Position navbar fixed at the top */
-  top: 0px; /* Align navbar at the top */
-  left: 0px; /* Align navbar to the left */
-  width: 100%; /* Navbar width */
-  height: 60px; /* Height of the navbar */
-  background-color: #000000; /* Background color */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #000;
   display: flex;
-  justify-content: space-between; /* Space out the logo and links */
+  justify-content: space-between;
   align-items: center;
-  padding: 0 20px; /* Padding for navbar content */
-  box-sizing: border-box; /* Include padding and borders in the width/height calculation */
-  z-index: 0; /* Ensure navbar stays behind logo */
-  opacity: 0; /* Initially hide the navbar */
-  animation: fadeIn 1s forwards; /* Apply fadeIn animation */
+  padding: 0 20px;
+  z-index: 0;
+  opacity: 0;
+  animation: fadeIn 1s forwards; /* Fade-in animation */
 }
 
-/* Keyframes for fading in the navbar */
+/* FadeIn Animation */
 @keyframes fadeIn {
   0% {
-    opacity: 0; /* Initially hidden */
+    opacity: 0;
   }
   100% {
-    opacity: 1; /* Fully visible */
+    opacity: 1;
   }
 }
 
 /* Logo container */
 .logo-container {
   display: flex;
-  align-items: center; /* Center the logo vertically */
-  opacity: 0; /* Initially hide the logo */
-  animation: fadeIn 1s forwards; /* Apply fade-in with the same timing as navbar */
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
 }
 
 .navbar-logo {
-  width: 140px; /* Adjust the size of the logo */
-  height: 56px; /* Maintain the aspect ratio of the logo */
-  padding-top: 8px;
-  margin-right: 20px; /* Add space between the logo and navbar links */
-  animation: zoomIn 1s ease-in-out; /* Add zoom-in effect to the logo */
+  width: 140px;
+  height: 56px;
+  margin-right: 20px;
+  animation: zoomIn 1s ease-in-out;
   border-radius: 8px;
-  transition: transform 1s ease-in-out, opacity 1s ease; /* Apply transition to the logo */
+  padding-top: 8px;
 }
 
-/* Keyframes for logo zoom-in animation */
+/* Zoom-in animation for logo */
 @keyframes zoomIn {
   0% {
-    transform: scale(0.8); /* Start from a smaller size */
-    opacity: 0; /* Start with invisible logo */
+    transform: scale(0.8);
+    opacity: 0;
   }
   100% {
-    transform: scale(1); /* End with normal size */
-    opacity: 1; /* Logo becomes fully visible */
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -61,59 +59,81 @@
   list-style: none;
   display: flex;
   margin: 0;
-  padding-right: 20px;
-  opacity: 0; /* Initially hide the navbar links */
-  animation: fadeIn 1s forwards; /* Apply fade-in with the same timing as navbar */
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  flex-grow: 1;
+  justify-content: flex-end;
 }
 
 /* Each navbar item */
 .navbar-item {
-  margin: 0 30px; /* Space between buttons */
-  opacity: 0; /* Initially hide navbar items */
-  animation: fadeIn 1s forwards; /* Apply fade-in with the same timing as navbar */
+  margin: 0 10px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
 }
 
 /* Navbar link style */
 .navbar-link {
   text-decoration: none;
-  color: #ffffff; /* Text color */
-  background-color: #000000; /* Background color */
-  font-size: 22px; /* Font size */
+  color: #fff;
+  background-color: #000;
+  font-size: 22px;
   font-weight: 600;
-  padding: 8px 25px; /* Reduced padding to reduce box height */
-  border-radius: 8px; /* Rounded corners */
-  text-align: center; /* Center text inside the button */
-  transition: all 0.3s ease; /* Smooth transition for the effect */
-  width: 180px; /* Fixed width for each button */
-  box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+  padding: 8px 25px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: 160px;
+  box-sizing: border-box;
 }
 
 /* Hover effect for navbar links */
 .navbar-link:hover {
-  color: #ffffff; /* Change text color on hover */
-  background-color: #6c0065; /* Purple background on hover */
-  transform: scale(1.1); /* Slightly grow the box on hover */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  background-color: #6c0065;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Add responsiveness for smaller screens */
 @media (max-width: 768px) {
   .navbar {
-    justify-content: center; /* Center navbar content on small screens */
-    padding: 0 10px; /* Reduce padding */
+    justify-content: center;
+    padding: 0 10px;
   }
 
   .navbar-links {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items vertically */
+    flex-direction: column;
+    align-items: center;
   }
 
   .navbar-item {
-    margin: 8px 0; /* Reduced space between buttons */
+    margin: 8px 0;
   }
 
   .navbar-link {
-    width: 150px; /* Adjust width for smaller screens */
-    padding: 12px 20px; /* Adjust padding for smaller screens */
+    width: 150px;
+    padding: 12px 20px;
   }
+}
+
+/* Center the Dashboard link */
+.centered-link {
+  flex-grow: 1;
+  display: flex;
+}
+
+/* Move Dashboard button a bit towards the right */
+.centered-link .navbar-link {
+  margin-left: 418px;
+}
+
+/* Move Login and Signup a bit towards the right */
+.navbar-links .navbar-item:not(.centered-link) {
+  margin-right: 50px;
+}
+
+/* Reduce space between Login and Signup buttons */
+.navbar-links .navbar-item:nth-child(2),
+.navbar-links .navbar-item:nth-child(3) {
+  margin-left: 10px;
 }
