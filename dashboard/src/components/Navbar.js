@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../assets/logo.png"; // Ensure the logo path is correct
-import "./Navbar.css"; // Import the CSS file for navbar styling
+import logo from "../assets/logo.png";
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
@@ -11,7 +11,6 @@ const Navbar = () => {
         </a>
       </div>
       <ul className="navbar-links">
-        {/* Center the Dashboard link */}
         <div className="centered-link">
           <li className="navbar-item">
             <a href="/dashboard" className="navbar-link">
@@ -19,7 +18,6 @@ const Navbar = () => {
             </a>
           </li>
         </div>
-        {/* Other links remain as they are */}
         <li className="navbar-item">
           <a href="/login" className="navbar-link">
             Login
