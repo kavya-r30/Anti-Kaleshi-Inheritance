@@ -1,30 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;600&family=Poppins:wght@100;500;600;800;900&family=Lobster+Two:ital,wght@0,400;0,700;1,400&display=swap");
-
-$font1: "Poppins", sans-serif;
-$font2: "Lobster Two", cursive;
-$white: #fff;
-$black: #000;
-$primary-light: #f9fafb;
-$second-light: #f0f0f0;
-$third-light: #dadbdb;
-
-$primary-dark: #222;
-$second-grey: #4f4f4f;
-
-$first-shadow: rgba(0, 0, 0, 0.3);
-
-$success: rgba(61, 168, 102, 0.6);
-$error: rgba(168, 30, 14, 0.6);
-
-$primary-color: #5c5fc4;
-$second-color: #c4c15c;
-
 /* GLOBAL CONFIG RESET */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: $font1;
+  font-family: "Poppins", sans-serif;
 }
 
 select:focus,
@@ -35,7 +14,7 @@ button:focus {
 
 /* -------- BODY DISPLAY --------- */
 body {
-  background-color: $primary-dark;
+  background-color: #222;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -65,13 +44,13 @@ span {
   text-transform: uppercase;
   line-height: 0.76em;
   position: absolute;
-  color: $white;
+  color: #fff;
   font-size: 3.5em;
   white-space: nowrap;
   font-weight: bold;
   padding: 0px 10px;
   transform-style: preserve-3d;
-  text-shadow: 0 10px 15px $first-shadow;
+  text-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   transform: translate(-50%, -50%) rotateX(calc(var(--i) * 22.5deg))
     translateZ(109px);
 }
@@ -81,11 +60,11 @@ i {
 }
 
 i:nth-child(1) {
-  color: $primary-color;
+  color: #5c5fc4;
 }
 
 i:nth-child(2) {
-  color: $second-color;
+  color: #c4c15c;
 }
 
 @keyframes animate {
@@ -96,5 +75,3 @@ i:nth-child(2) {
     transform: perspective(50px) rotateX(360deg) rotate(5deg);
   }
 }
-
-/* -------- PSEUDO CLASS --------- */
