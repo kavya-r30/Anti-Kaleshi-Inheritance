@@ -1,6 +1,6 @@
 /* src/App.css */
 .App {
-  text-align: left; /* Align text to the left */
+  text-align: left;
   background: radial-gradient(
     circle at 50% 50%,
     #0b0991,
@@ -12,12 +12,12 @@
     #020933,
     #020424
   );
-  color: #ffffff; /* Light text color */
-  height: 100vh; /* Full height */
-  display: flex; /* Use flexbox for layout */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
-  padding: 10px; /* Add padding to the container */
-  overflow: hidden; /* Hide anything that overflows during animation */
-  position: relative; /* Position relative for loader to work */
+  color: #ffffff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
 }
