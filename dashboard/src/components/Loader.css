@@ -1,14 +1,12 @@
-/* "Never Ending Box" Loader styles */
 #loader {
-  position: absolute; /* Ensure absolute positioning to center it */
-  top: 50%; /* Move the loader vertically to the center */
-  left: 48%; /* Move the loader horizontally to the center */
-  transform: translate(-50%, -50%); /* Adjust the position to exactly center */
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  transform: translate(-50%, -50%);
   width: 5.4em;
   height: 5.4em;
-  /* background-color: #0a003e; Increased duration to allow 3 cycles of box animation */
-  opacity: 1; /* Initial opacity */
-  transition: opacity 2s ease-out; /* Smooth fade-out transition */
+  opacity: 1;
+  transition: opacity 2s ease-out;
 }
 
 #hill {
@@ -28,7 +26,6 @@
   width: 7.1em;
   height: 7.1em;
   left: 0;
-  /* background-color: #0a003e; */
 }
 
 #box {
@@ -41,30 +38,29 @@
   border: 0.25em solid rgb(255, 255, 255);
   border-radius: 15%;
   transform: translate(0, -1em) rotate(-45deg);
-  animation: push 1.5s cubic-bezier(0.79, 0, 0.47, 0.97) infinite; /* Adjusted to 3s for 3 cycles */
+  animation: push 1.5s cubic-bezier(0.79, 0, 0.47, 0.97) infinite;
 }
 
 @keyframes push {
   0% {
-    transform: translate(0, -1em) rotate(-45deg); /* Starting position */
+    transform: translate(0, -1em) rotate(-45deg);
   }
   25% {
-    transform: translate(1em, -2em) rotate(47deg); /* First move up */
+    transform: translate(1em, -2em) rotate(47deg);
   }
   50% {
-    transform: translate(2em, -3em) rotate(137deg); /* Second move up */
+    transform: translate(2em, -3em) rotate(137deg);
   }
   75% {
-    transform: translate(3em, -4em) rotate(217deg); /* Peak at the hill */
+    transform: translate(3em, -4em) rotate(217deg);
   }
   100% {
-    transform: translate(0, -1em) rotate(-225deg); /* Return back down to starting position */
+    transform: translate(0, -1em) rotate(-225deg);
   }
 }
 
-/* Fade out the loader when the state changes */
 .fadeOut {
   opacity: 0;
-  pointer-events: none; /* Disable interaction with the loader */
-  transition: opacity 2s ease-out; /* Smooth fade-out */
+  pointer-events: none;
+  transition: opacity 2s ease-out;
 }
