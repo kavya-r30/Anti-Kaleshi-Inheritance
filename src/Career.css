@@ -1,3 +1,4 @@
+/* Career Container */
 .career-container {
     display: flex;
     flex-direction: column;
@@ -29,52 +30,46 @@
     background-color: #0056b3;
   }
   
-  /* Styles for the form to add a new question */
-  .career-new-discussion-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* New Question Form Styles */
+  .new-question-form {
+    margin-top: 20px;
   }
   
-  .form-input,
-  .form-textarea {
+  .new-question-form input, 
+  .new-question-form textarea {
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
   }
   
-  .form-actions {
-    display: flex;
-    gap: 10px;
-  }
-  
-  button {
-    font-size: 16px;
+  /* Post Question Button */
+  .post-question-btn {
+    background-color: #eafbea; /* Blue color */
+    color: white;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
   }
   
-  button:hover {
-    opacity: 0.9;
+  .post-question-btn:hover {
+    background-color: #0056b3; /* Darker blue */
   }
   
-  .career-post-discussion-btn {
-    background-color: #007bff;
+  /* Cancel Button */
+  .cancel-btn {
+    background-color: #6c757d; /* Gray color */
     color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
   }
   
-  .career-cancel-btn {
-    background-color: #6c757d;
-    color: white;
+  .cancel-btn:hover {
+    background-color: #5a636d; /* Darker gray */
   }
   
   /* Discussion Card Styles */
@@ -101,6 +96,7 @@
     margin-top: 10px;
   }
   
+  /* Voting Section */
   .career-voting-section {
     display: flex;
     align-items: center;
@@ -133,27 +129,46 @@
       right: 10px;
     }
   }
-
   
+  /* New Question Button Styles */
   .new-question-btn {
-    background-color: #4CAF50;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff; /* Blue color */
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 50%; /* Circular shape */
     cursor: pointer;
-    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    font-size: 20px; /* Adjust the font size to make it look good */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
   }
   
+  /* Hover effect */
   .new-question-btn:hover {
-    background-color: #45a049;
+    background-color: #0056b3; /* Darker blue */
   }
   
+  /* Responsiveness (for smaller screens) */
+  @media (max-width: 768px) {
+    .new-question-btn {
+      bottom: 10px;
+      right: 10px; /* Slightly reduce distance from screen edges */
+    }
+  }
+  
+  /* Form Styling for New Question */
   .new-question-form {
     margin-top: 20px;
   }
   
-  .new-question-form input, .new-question-form textarea {
+  .new-question-form input, 
+  .new-question-form textarea {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -164,7 +179,7 @@
   .new-question-form button {
     padding: 10px;
     border: none;
-    background-color: #4CAF50;
+    background-color: #6c757d;
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -172,6 +187,22 @@
   }
   
   .new-question-form button:hover {
-    background-color: #45a049;
+    background-color: #5a636d; /* Darker gray */
+  }
+  
+
+  /* Common style for both Post Question and Post Reply */
+.post-button {
+    background-color: #6c757d; /* Grey color */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .post-button:hover {
+    background-color: #5a6268; /* Slightly darker grey */
   }
   

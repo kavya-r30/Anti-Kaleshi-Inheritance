@@ -273,20 +273,47 @@ const Career = () => {
 
       {showForm && (
         <div className="new-question-form">
-          <input
-            type="text"
-            value={newQuestion}
-            onChange={(e) => setNewQuestion(e.target.value)}
-            placeholder="Enter your question here..."
-          />
-          <textarea
-            value={newDescription}
-            onChange={(e) => setNewDescription(e.target.value)}
-            placeholder="Enter your question description..."
-          />
-          <button onClick={handleAddQuestion}>Post Question</button>
-          <button onClick={() => setShowForm(false)}>Cancel</button>
-        </div>
+        <input
+          type="text"
+          value={newQuestion}
+          onChange={(e) => setNewQuestion(e.target.value)}
+          placeholder="Enter your question here..."
+        />
+        <textarea
+          value={newDescription}
+          onChange={(e) => setNewDescription(e.target.value)}
+          placeholder="Enter your question description..."
+        />
+        <button
+          style={{
+            backgroundColor: '#f0f0f0', // Grey color
+            color: 'black',
+            padding: '12px 20px',
+            borderRadius: '5px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+          }}
+          onClick={handleAddQuestion}
+        >
+          Post Question
+        </button>
+        <button
+          style={{
+            backgroundColor: '#6c757d', // Grey color
+            color: 'black',
+            padding: '12px 20px',
+            borderRadius: '5px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+          }}
+          onClick={() => setShowForm(false)}
+        >
+          Cancel
+        </button>
+      </div>
+         
       )}
 
       {threads.map(thread => (
