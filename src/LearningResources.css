@@ -1,0 +1,21 @@
+/* Dark Mode Styles for Learning Resources */
+.dark-mode .resource-link {
+    color: #80b3ff;
+  }
+  
+  .dark-mode .resource-link:hover {
+    color: #66a3ff;
+  }
+  
+  .dark-mode .resource-item {
+    background-color: #333;
+    color: white;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .dark-mode .resource-item:hover {
+    background-color: #444;
+  }
+  

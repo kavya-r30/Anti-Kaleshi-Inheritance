@@ -1,0 +1,203 @@
+.app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .discussion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .discussion-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .discussion-header {
+    margin-bottom: 15px;
+  }
+  
+  .discussion-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
+  }
+  
+  .discussion-meta {
+    display: flex;
+    gap: 15px;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  .discussion-content {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .voting-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .voting-section button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .voting-section button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .replies-section {
+    margin-top: 20px;
+  }
+  
+  .replies-section h3 {
+    color: #444;
+    margin-bottom: 15px;
+  }
+  
+  .reply-card {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .reply-card.best-answer {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+  }
+  
+  .reply-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .reply-author {
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .answer-badge {
+    background-color: #4caf50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+  
+  .reply-content {
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .reply-form {
+    margin-top: 20px;
+  }
+  
+  .reply-form textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-family: inherit;
+  }
+  
+  .reply-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .reply-form button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  /* Updated styles for even bigger buttons */
+.large-button {
+    font-size: 24px; /* Increased font size */
+    padding: 20px 40px; /* Increased padding for bigger buttons */
+    margin: 20px; /* Increased margin for spacing */
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Slightly rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Added transform effect */
+    text-align: center;
+  }
+  
+  .large-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.1); /* Slightly increase size on hover */
+  }
+  
+  .large-button:focus {
+    outline: none; /* Remove focus outline */
+  }
+  
+  .active {
+    background-color: #45a049; /* Active state with darker green */
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap between buttons */
+    margin-top: 40px; /* Increased margin on top */
+  }
+  
+  .tabs button {
+    flex: 1; /* Make buttons stretch across the screen */
+  }
+
+  /* Dark Mode Styles for Community Discussions */
+.dark-mode .discussion-card {
+  background-color: #333;
+  color: white;
+}
+
+.dark-mode .discussion-card:hover {
+  background-color: #444;
+}
+
+.dark-mode .voting-section button {
+  background-color: #444;
+  color: white;
+}
+
+.dark-mode .voting-section button:hover {
+  background-color: #555;
+}
