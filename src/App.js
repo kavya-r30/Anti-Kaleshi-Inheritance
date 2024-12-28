@@ -275,58 +275,128 @@
 
 // export default App;
 
+// import React, { useState } from 'react';
+// import './Discussion.css';
+// import './LearningResources.css';
+// import CommunityDiscussions from './CommunityDiscussions';
+// import LearningResources from './LearningResources';
+// import Career from './Career';
+// import SupportFeedback from './SupportFeedback';
+
+// function App() {
+//   const [activeTab, setActiveTab] = useState('forum'); // Track the active tab
+
+//   return (
+//     <div className="app">
+//       <header className="header">
+//         <h1>Discussion Forum</h1>
+//       </header>
+
+//       <div className="tabs">
+//         <button
+//           className={activeTab === 'forum' ? 'active large-button' : 'large-button'}
+//           onClick={() => setActiveTab('forum')}
+//         >
+//           Community Discussions
+//         </button>
+//         <button
+//           className={activeTab === 'study-guide' ? 'active large-button' : 'large-button'}
+//           onClick={() => setActiveTab('study-guide')}
+//         >
+//           Learning Resources
+//         </button>
+//         <button
+//           className={activeTab === 'career' ? 'active large-button' : 'large-button'}
+//           onClick={() => setActiveTab('career')}
+//         >
+//           Career
+//         </button>
+//         <button
+//           className={activeTab === 'support' ? 'active large-button' : 'large-button'}
+//           onClick={() => setActiveTab('support')}
+//         >
+//           Support & Feedback
+//         </button>
+//       </div>
+
+//       {/* Conditionally render the active tab's component */}
+//       {activeTab === 'forum' && <CommunityDiscussions />}
+//       {activeTab === 'study-guide' && <LearningResources />}
+//       {activeTab === 'career' && <Career />}
+//       {activeTab === 'support' && <SupportFeedback />}
+//     </div>
+//   );
+// }
+
+// export default App;
+
 import React, { useState } from 'react';
 import './Discussion.css';
-import './LearningResources.css';
 import CommunityDiscussions from './CommunityDiscussions';
 import LearningResources from './LearningResources';
 import Career from './Career';
 import SupportFeedback from './SupportFeedback';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('forum'); // Track the active tab
+  const [activeTab, setActiveTab] = useState('forum');
 
   return (
-    <div className="app">
-      <header className="header">
-        <h1>Discussion Forum</h1>
-      </header>
-
-      <div className="tabs">
-        <button
-          className={activeTab === 'forum' ? 'active large-button' : 'large-button'}
-          onClick={() => setActiveTab('forum')}
-        >
-          Community Discussions
-        </button>
-        <button
-          className={activeTab === 'study-guide' ? 'active large-button' : 'large-button'}
-          onClick={() => setActiveTab('study-guide')}
-        >
-          Learning Resources
-        </button>
-        <button
-          className={activeTab === 'career' ? 'active large-button' : 'large-button'}
-          onClick={() => setActiveTab('career')}
-        >
-          Career
-        </button>
-        <button
-          className={activeTab === 'support' ? 'active large-button' : 'large-button'}
-          onClick={() => setActiveTab('support')}
-        >
-          Support & Feedback
-        </button>
+    <div className="app-container">
+      {/* Sidebar Navigation */}
+      <div className="sidebar">
+        <div className="sidebar-header">
+          <h3>Categories</h3>
+        </div>
+        <nav className="sidebar-nav">
+          <ul>
+            <li 
+              className={activeTab === 'forum' ? 'active' : ''} 
+              onClick={() => setActiveTab('forum')}
+            >
+              <span className="nav-icon">💬</span>
+              Community Discussions
+            </li>
+            <li 
+              className={activeTab === 'study-guide' ? 'active' : ''} 
+              onClick={() => setActiveTab('study-guide')}
+            >
+              <span className="nav-icon">📚</span>
+              Learning Resources
+            </li>
+            <li 
+              className={activeTab === 'career' ? 'active' : ''} 
+              onClick={() => setActiveTab('career')}
+            >
+              <span className="nav-icon">💼</span>
+              Career
+            </li>
+            <li 
+              className={activeTab === 'support' ? 'active' : ''} 
+              onClick={() => setActiveTab('support')}
+            >
+              <span className="nav-icon">🤝</span>
+              Support & Feedback
+            </li>
+          </ul>
+        </nav>
       </div>
 
-      {/* Conditionally render the active tab's component */}
-      {activeTab === 'forum' && <CommunityDiscussions />}
-      {activeTab === 'study-guide' && <LearningResources />}
-      {activeTab === 'career' && <Career />}
-      {activeTab === 'support' && <SupportFeedback />}
+      {/* Main Content Area */}
+      <div className="main-content">
+        <header className="main-header">
+          <h1>Discussion Forum</h1>
+        </header>
+
+        {/* Content Area */}
+        <div className="content-area">
+          {activeTab === 'forum' && <CommunityDiscussions />}
+          {activeTab === 'study-guide' && <LearningResources />}
+          {activeTab === 'career' && <Career />}
+          {activeTab === 'support' && <SupportFeedback />}
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
-

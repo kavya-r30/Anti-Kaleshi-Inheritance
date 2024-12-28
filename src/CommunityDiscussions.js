@@ -313,84 +313,139 @@ const CommunityDiscussions = () => {
     },
   ]);
 
-  const [replyInputs, setReplyInputs] = useState({});  // State to handle replies for each thread
-  const [visibleReplies, setVisibleReplies] = useState({});  // State to handle replies visibility for each thread
+  const [replyInputs, setReplyInputs] = useState({});
+  const [visibleReplies, setVisibleReplies] = useState({});
+  const [showNewDiscussion, setShowNewDiscussion] = useState(false);
+  const [newDiscussion, setNewDiscussion] = useState({ title: '', content: '' });
+
+  const handleNewDiscussion = (e) => {
+    e.preventDefault();
+    if (!newDiscussion.title.trim() || !newDiscussion.content.trim()) return;
+
+    const discussion = {
+      id: threads.length + 1,
+      title: newDiscussion.title,
+      content: newDiscussion.content,
+      author: "currentUser",
+      votes: 0,
+      replies: [],
+      timestamp: "Just now",
+    };
+
+    setThreads([discussion, ...threads]);
+    setNewDiscussion({ title: '', content: '' });
+    setShowNewDiscussion(false);
+  };
 
   const handleVote = (threadId, replyId = null, isUpvote) => {
-    setThreads(prevThreads => {
-      return prevThreads.map(thread => {
+    setThreads((prevThreads) =>
+      prevThreads.map((thread) => {
         if (thread.id === threadId) {
           if (replyId === null) {
-            return {
-              ...thread,
-              votes: thread.votes + (isUpvote ? 1 : -1)
-            };
-          } else {
-            return {
-              ...thread,
-              replies: thread.replies.map(reply => {
-                if (reply.id === replyId) {
-                  return {
-                    ...reply,
-                    votes: reply.votes + (isUpvote ? 1 : -1)
-                  };
-                }
-                return reply;
-              })
-            };
+            return { ...thread, votes: thread.votes + (isUpvote ? 1 : -1) };
           }
+          return {
+            ...thread,
+            replies: thread.replies.map((reply) =>
+              reply.id === replyId
+                ? { ...reply, votes: reply.votes + (isUpvote ? 1 : -1) }
+                : reply
+            ),
+          };
         }
         return thread;
-      });
-    });
+      })
+    );
   };
 
   const handleNewReply = (threadId) => {
     if (!replyInputs[threadId]?.trim()) return;
 
-    setThreads(prevThreads => {
-      return prevThreads.map(thread => {
-        if (thread.id === threadId) {
-          return {
-            ...thread,
-            replies: [...thread.replies, {
-              id: thread.replies.length + 1,
-              author: "currentUser",
-              content: replyInputs[threadId],
-              votes: 0,
-              isAnswer: false
-            }]
-          };
-        }
-        return thread;
-      });
-    });
+    setThreads((prevThreads) =>
+      prevThreads.map((thread) =>
+        thread.id === threadId
+          ? {
+              ...thread,
+              replies: [
+                ...thread.replies,
+                {
+                  id: thread.replies.length + 1,
+                  author: "currentUser",
+                  content: replyInputs[threadId],
+                  votes: 0,
+                  isAnswer: false,
+                },
+              ],
+            }
+          : thread
+      )
+    );
 
-    setReplyInputs(prev => ({
-      ...prev,
-      [threadId]: ""  // Clear the input after posting
-    }));
+    setReplyInputs((prev) => ({ ...prev, [threadId]: '' }));
   };
 
   const toggleRepliesVisibility = (threadId) => {
-    setVisibleReplies(prev => ({
-      ...prev,
-      [threadId]: !prev[threadId]
-    }));
+    setVisibleReplies((prev) => ({ ...prev, [threadId]: !prev[threadId] }));
   };
 
   const handleInputChange = (threadId, value) => {
-    setReplyInputs(prev => ({
-      ...prev,
-      [threadId]: value  // Update the reply input for the specific thread
-    }));
+    setReplyInputs((prev) => ({ ...prev, [threadId]: value }));
   };
 
   return (
     <div className="discussion-container">
-      {threads.map(thread => (
+      <div className="discussions-header">
+        <button
+          className="new-discussion-btn"
+          onClick={() => setShowNewDiscussion(true)}
+        >
+          + New Discussion
+        </button>
+      </div>
+
+      {showNewDiscussion && (
+        <div className="new-discussion-form">
+          <h2>Start a New Discussion</h2>
+          <form onSubmit={handleNewDiscussion}>
+            <input
+              type="text"
+              placeholder="Discussion Title"
+              value={newDiscussion.title}
+              onChange={(e) =>
+                setNewDiscussion({ ...newDiscussion, title: e.target.value })
+              }
+              className="form-input"
+            />
+            <textarea
+              placeholder="What would you like to discuss?"
+              value={newDiscussion.content}
+              onChange={(e) =>
+                setNewDiscussion({ ...newDiscussion, content: e.target.value })
+              }
+              className="form-textarea"
+            />
+            <div className="form-actions">
+              <button type="submit" className="submit-btn">
+                Post Discussion
+              </button>
+              <button
+                type="button"
+                className="cancel-btn"
+                onClick={() => setShowNewDiscussion(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      {threads.map((thread) => (
         <div key={thread.id} className="discussion-card">
-          <div className="discussion-header" onClick={() => toggleRepliesVisibility(thread.id)}>
+          <div
+            className="discussion-header"
+            onClick={() => toggleRepliesVisibility(thread.id)}
+          >
             <h2>{thread.title}</h2>
             <div className="discussion-meta">
               <span>{thread.author}</span>
@@ -409,17 +464,28 @@ const CommunityDiscussions = () => {
           {visibleReplies[thread.id] && (
             <div className="replies-section">
               <h3>Replies</h3>
-              {thread.replies.map(reply => (
-                <div key={reply.id} className={`reply-card ${reply.isAnswer ? 'best-answer' : ''}`}>
+              {thread.replies.map((reply) => (
+                <div
+                  key={reply.id}
+                  className={`reply-card ${reply.isAnswer ? 'best-answer' : ''}`}
+                >
                   <div className="reply-header">
                     <span className="reply-author">{reply.author}</span>
                     {reply.isAnswer && <span className="answer-badge">Best Answer</span>}
                   </div>
                   <p className="reply-content">{reply.content}</p>
                   <div className="voting-section">
-                    <button onClick={() => handleVote(thread.id, reply.id, true)}>👍</button>
+                    <button
+                      onClick={() => handleVote(thread.id, reply.id, true)}
+                    >
+                      👍
+                    </button>
                     <span>{reply.votes}</span>
-                    <button onClick={() => handleVote(thread.id, reply.id, false)}>👎</button>
+                    <button
+                      onClick={() => handleVote(thread.id, reply.id, false)}
+                    >
+                      👎
+                    </button>
                   </div>
                 </div>
               ))}
@@ -428,11 +494,13 @@ const CommunityDiscussions = () => {
 
           <div className="reply-form">
             <textarea
-              value={replyInputs[thread.id] || ""}  // Use thread-specific input value
+              value={replyInputs[thread.id] || ''}
               onChange={(e) => handleInputChange(thread.id, e.target.value)}
               placeholder="Write your reply..."
             />
-            <button onClick={() => handleNewReply(thread.id)}>Post Reply</button>
+            <button onClick={() => handleNewReply(thread.id)} className="submit-btn">
+              Post Reply
+            </button>
           </div>
         </div>
       ))}
