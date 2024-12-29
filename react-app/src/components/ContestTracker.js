@@ -52,22 +52,22 @@ const ContestCalendar = () => {
 
   const getPlatformColor = (platform) => {
     const colors = {
-      'leetcode': 'bg-yellow-500',
-      'codeforces': 'bg-red-500',
-      'atcoder': 'bg-blue-500',
-      'codechef': 'bg-green-500',
-      'geeksforgeeks': 'bg-emerald-900'
+      'leetcode': 'bg-[#e7a41f]',
+      'codeforces': 'bg-[#f44336]',
+      'atcoder': 'bg-[#19cfe7]',
+      'codechef': 'bg-[#e47c84]',
+      'geeksforgeeks': 'bg-[#308c44]'
     };
     return colors[platform.toLowerCase()] || 'bg-gray-500';
   };
 
   const getPlaformBorderColor = (platform) => {
     const colors = {
-      'leetcode': 'border-yellow-500',
-      'codeforces': 'border-red-500',
-      'atcoder': 'border-blue-500',
-      'codechef': 'border-green-500',
-      'geeksforgeeks': 'border-emerald-900'
+      'leetcode': 'border-[#e7a41f]',
+      'codeforces': 'border-[#f44336]',
+      'atcoder': 'border-[#19cfe7]',
+      'codechef': 'border-[#e47c84]',
+      'geeksforgeeks': 'border-[#308c44]'
     };
     return colors[platform.toLowerCase()] || 'border-purple-200'
   }
@@ -140,7 +140,7 @@ const ContestCalendar = () => {
               placeholder="Search contests..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-md border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-9 pr-4 py-2 rounded-3xl shadow shadow-[#C9B5D1] border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <div className="flex flex-wrap gap-2">
@@ -148,7 +148,7 @@ const ContestCalendar = () => {
               <button
                 key={platform.id}
                 onClick={() => togglePlatform(platform.id)}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                className={`px-3 py-1.5 rounded-3xl text-xs font-medium transition-colors ${
                   selectedPlatforms[platform.id]
                     ? `${getPlatformColor(platform.id)} text-white`
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -163,14 +163,14 @@ const ContestCalendar = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
           {/* Upcoming Contests */}
           <div className="lg:col-span-3">
-            <div className="bg-white border border-gray-200 rounded-md h-[800px]">
+            <div className="bg-white border border-gray-200 rounded-xl shadow-md shadow-[#d6b9d0] h-[800px]">
               <div className="px-4 py-3 border-b border-gray-200">
                 <h2 className="text-sm font-medium text-gray-900 flex items-center gap-2">
                   <Clock className="w-4 h-4" />
                   Upcoming Contests
                 </h2>
               </div>
-              <div className="overflow-auto h-[calc(100%-3rem)]">
+              <div className="overflow-auto h-[calc(100%-3rem)] pr-2" style={{scrollbarWidth: '3px'}}>
                 {loading ? (
                   <div className="flex justify-center p-8">
                     <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
@@ -186,7 +186,7 @@ const ContestCalendar = () => {
                         className="block p-3 hover:bg-gray-50 transition-colors"
                       >
                         <div className="flex items-start gap-3">
-                          <div className={`border-2 ${getPlaformBorderColor(contest.platform)} w-16 h-16 rounded-md flex items-center justify-center text-white text-xs font-medium p-2`}>
+                          <div className={`w-14 h-14 flex items-center justify-center text-white text-xs font-medium p-2`}>
                             <img 
                               src={platformLogos[contest.platform.toLowerCase()]}
                               alt={`${contest.platform} logo`}
@@ -218,7 +218,7 @@ const ContestCalendar = () => {
 
           {/* Calendar Section */}
           <div className="lg:col-span-9">
-            <div className="bg-white border border-gray-200 rounded-md">
+            <div className="bg-white border border-gray-200 rounded-xl shadow-md shadow-[#d6b9d0]">
               <div className="px-4 py-3 border-b border-gray-200 flex justify-between items-center">
                 <h2 className="text-sm font-medium text-gray-900 flex items-center gap-2">
                   <CalendarHeart className="w-4 h-4" />

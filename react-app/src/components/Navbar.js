@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -33,13 +33,13 @@ const Navbar = () => {
             {/* Logo */}
             <div className="w-32 flex">
               <Link to="/" className="text-2xl font-bold">
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#f7b3ba] to-[#daa5f2] bg-clip-text text-transparent">
                   CodeSync
                 </span>
               </Link>
             </div>
 
-            {/* Center Navigation - Fixed width container */}
+            {/* Center Navigation */}
             <div className="flex-1 flex justify-center">
               <div className="flex space-x-8">
                 <Link to="/chatbot" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
@@ -57,7 +57,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Right Side Items - Fixed width container */}
+            {/* Right Side Items */}
             <div className="w-32 flex items-center justify-end space-x-4">
               <button
                 onClick={() => setIsDark(!isDark)}
@@ -68,7 +68,7 @@ const Navbar = () => {
 
               <Link
                 to="/login"
-                className={`px-4 py-2 rounded-lg bg-black dark:bg-white text-white dark:text-black font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors ${
+                className={`px-4 py-2 rounded-lg bg-[#daa5f2] dark:bg-white text-white dark:text-black font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors ${
                   // scrolled ? 'text-sm' : 'text-base'
                   scrolled ? 'text-sm' : 'text-sm'
                 }`}
