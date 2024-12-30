@@ -90,6 +90,16 @@ app.patch("/comm/:id/vote", async (req, res) => {
         thread.votes -= 1;
       }
     }
+
+    const maxVoteReply = thread.replies.reduce(
+      (max, reply) => (reply.votes > max.votes ? reply : max),
+      { votes: -Infinity }
+    );
+
+    thread.replies.forEach((reply) => {
+      reply.isAnswer = reply._id.equals(maxVoteReply._id);
+    });
+
     await thread.save();
     res.json(thread);
   } catch (err) {
@@ -104,6 +114,16 @@ app.post("/comm/:id/replies", async (req, res) => {
     const thread = await Thread.findById(req.params.id);
     const newReply = { author, content, votes, isAnswer };
     thread.replies.push(newReply);
+
+    const maxVoteReply = thread.replies.reduce(
+      (max, reply) => (reply.votes > max.votes ? reply : max),
+      { votes: -Infinity }
+    );
+
+    thread.replies.forEach((reply) => {
+      reply.isAnswer = reply._id.equals(maxVoteReply._id);
+    });
+
     await thread.save();
     res.json(thread);
   } catch (err) {
