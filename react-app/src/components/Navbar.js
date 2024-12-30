@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+  if(isAuthenticated){
+    console.log(user);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +29,8 @@ const Navbar = () => {
       <nav className={`w-full transition-all duration-300 ${
         scrolled 
           // ? 'mx-4 my-4 rounded-2xl bg-purple-50/70 dark:bg-gray-900/80 backdrop-blur-md shadow-lg max-w-3xl' 
-          ? 'bg-purple-50 dark:bg-gray-900 w-full border-b border-gray-200'
-          : 'bg-purple-50 dark:bg-gray-900 w-full'
+          ? 'bg-purple-50 w-full border-b border-gray-200'
+          : 'bg-purple-50 w-full'
       }`}>
         <div className="px-4 mx-auto">
           <div className={`flex items-center justify-between transition-all duration-300 ${
@@ -66,15 +72,24 @@ const Navbar = () => {
                 {isDark ? <Sun size={20} /> : <Moon size={20} />}
               </button>
 
-              <Link
-                to="/login"
-                className={`px-4 py-2 rounded-lg bg-[#daa5f2] dark:bg-white text-white dark:text-black font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors ${
-                  // scrolled ? 'text-sm' : 'text-base'
-                  scrolled ? 'text-sm' : 'text-sm'
-                }`}
-              >
-                Login
-              </Link>
+              {isAuthenticated ? (
+                <button onClick={(e) => logout()} className={`px-4 py-2 rounded-lg bg-[#daa5f2] dark:bg-white text-white dark:text-black font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors ${
+                    // scrolled ? 'text-sm' : 'text-base'
+                    scrolled ? 'text-sm' : 'text-sm'
+                  }`}
+                >
+                  Logout
+                </button>
+
+              ) : (
+                <button className={`px-4 py-2 rounded-lg bg-[#daa5f2] dark:bg-white text-white dark:text-black font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors ${
+                    // scrolled ? 'text-sm' : 'text-base'
+                    scrolled ? 'text-sm' : 'text-sm'
+                  }`} onClick={(e) => loginWithRedirect()}
+                >
+                  Login
+                </button>
+              )}
             </div>
           </div>
         </div>
