@@ -6,7 +6,7 @@ const app = express();
 app.use(
   cors({
     origin: "*",
-    credentials: true, 
+    credentials: true,
   })
 );
 
@@ -35,9 +35,9 @@ const threadSchema = new mongoose.Schema({
   timestamp: String,
 });
 
-const Thread = mongoose.model("Thread", threadSchema);
+const Thread = mongoose.model("Thread", threadSchema, "comm");
 
-app.get("/threads", async (req, res) => {
+app.get("/comm", async (req, res) => {
   try {
     const threads = await Thread.find();
     res.json(threads);
@@ -47,7 +47,7 @@ app.get("/threads", async (req, res) => {
   }
 });
 
-app.post("/threads", async (req, res) => {
+app.post("/comm", async (req, res) => {
   try {
     const newThread = new Thread(req.body);
     await newThread.save();
@@ -58,7 +58,7 @@ app.post("/threads", async (req, res) => {
   }
 });
 
-app.put("/threads/:id", async (req, res) => {
+app.put("/comm/:id", async (req, res) => {
   try {
     const updatedThread = await Thread.findByIdAndUpdate(
       req.params.id,
@@ -72,7 +72,7 @@ app.put("/threads/:id", async (req, res) => {
   }
 });
 
-app.patch("/threads/:id/vote", async (req, res) => {
+app.patch("/comm/:id/vote", async (req, res) => {
   const { replyId, isUpvote } = req.body;
   try {
     const thread = await Thread.findById(req.params.id);
@@ -98,7 +98,7 @@ app.patch("/threads/:id/vote", async (req, res) => {
   }
 });
 
-app.post("/threads/:id/replies", async (req, res) => {
+app.post("/comm/:id/replies", async (req, res) => {
   const { author, content, votes = 0, isAnswer = false } = req.body;
   try {
     const thread = await Thread.findById(req.params.id);
@@ -112,7 +112,7 @@ app.post("/threads/:id/replies", async (req, res) => {
   }
 });
 
-app.patch("/threads/:id/replies/:replyId/answer", async (req, res) => {
+app.patch("/comm/:id/replies/:replyId/answer", async (req, res) => {
   try {
     const thread = await Thread.findById(req.params.id);
     const reply = thread.replies.id(req.params.replyId);

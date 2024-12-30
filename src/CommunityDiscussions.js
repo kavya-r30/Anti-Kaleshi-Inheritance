@@ -179,7 +179,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Discussion.css";
 
-const API_URL = "http://localhost:5000/threads";
+const API_URL = "http://localhost:5000/comm";
 
 const CommunityDiscussions = () => {
   const [threads, setThreads] = useState([]);
