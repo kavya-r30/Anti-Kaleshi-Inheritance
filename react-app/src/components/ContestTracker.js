@@ -50,27 +50,17 @@ const ContestCalendar = () => {
     fetchContests(startDate, endDate);
   }, [currentDate]);
 
-  const getPlatformColor = (platform) => {
+  const getPlatformConfig = (platform) => {
     const colors = {
-      'leetcode': 'bg-[#e7a41f]',
-      'codeforces': 'bg-[#f44336]',
-      'atcoder': 'bg-[#19cfe7]',
-      'codechef': 'bg-[#e47c84]',
-      'geeksforgeeks': 'bg-[#308c44]'
+      'leetcode': { bg: 'bg-[#e7a41f]', border: 'border-[#e7a41f]', bgo: 'bg-[#fcba35]/60', text: 'text-[#e7a41f]' },
+      'codeforces': { bg: 'bg-[#f44336]', border: 'border-[#f44336]', bgo: 'bg-[#f44336]/60', text: 'text-[#f44336]' },
+      'atcoder': { bg: 'bg-[#19cfe7]', border: 'border-[#19cfe7]', bgo: 'bg-[#19cfe7]/60', text: 'text-[#19cfe7]' },
+      'codechef': { bg: 'bg-[#e47c84]', border: 'border-[#e47c84]', bgo: 'bg-[#d97179]/50', text: 'text-[#e47c84]' },
+      'geeksforgeeks': { bg: 'bg-[#308c44]', border: 'border-[#308c44]', bgo: 'bg-[#00bd29]/60', text: 'text-[#308c44]' }
     };
-    return colors[platform.toLowerCase()] || 'bg-gray-500';
-  };
-
-  const getPlaformBorderColor = (platform) => {
-    const colors = {
-      'leetcode': 'border-[#e7a41f]',
-      'codeforces': 'border-[#f44336]',
-      'atcoder': 'border-[#19cfe7]',
-      'codechef': 'border-[#e47c84]',
-      'geeksforgeeks': 'border-[#308c44]'
-    };
-    return colors[platform.toLowerCase()] || 'border-purple-200'
-  }
+  
+    return colors[platform.toLowerCase()] || { bg: 'bg-gray-500', border: 'border-purple-200', bgo: 'bg-purple-200/60' };
+  };  
 
   const platformLogos = {
     'leetcode': leetcodeIcon,
@@ -96,8 +86,8 @@ const ContestCalendar = () => {
   };
 
   const isUpcoming = (startDate) => {
-    // return new Date(startDate) > new Date();
-    return new Date(startDate) > new Date(new Date().setDate(new Date().getDate() - 20));
+    return new Date(startDate) > new Date();
+    // return new Date(startDate) > new Date(new Date().setDate(new Date().getDate() + 20));
   };
 
   const filteredContests = contests
@@ -150,7 +140,7 @@ const ContestCalendar = () => {
                 onClick={() => togglePlatform(platform.id)}
                 className={`px-3 py-1.5 rounded-3xl text-xs font-medium transition-colors ${
                   selectedPlatforms[platform.id]
-                    ? `${getPlatformColor(platform.id)} text-white`
+                    ? `${getPlatformConfig(platform.id).bg} text-white`
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -164,13 +154,13 @@ const ContestCalendar = () => {
           {/* Upcoming Contests */}
           <div className="lg:col-span-3">
             <div className="bg-white border border-gray-200 rounded-xl shadow-md shadow-[#d6b9d0] h-[800px]">
-              <div className="px-4 py-3 border-b border-gray-200">
+              <div className="px-4 py-[0.85rem] border-b border-gray-200">
                 <h2 className="text-sm font-medium text-gray-900 flex items-center gap-2">
                   <Clock className="w-4 h-4" />
                   Upcoming Contests
                 </h2>
               </div>
-              <div className="overflow-auto h-[calc(100%-3rem)] pr-2" style={{scrollbarWidth: '3px'}}>
+              <div className="overflow-auto h-[calc(100%-3.5rem)] pr-2" style={{scrollbarWidth: 'thin'}}>
                 {loading ? (
                   <div className="flex justify-center p-8">
                     <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
@@ -271,7 +261,7 @@ const ContestCalendar = () => {
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   key={contest._id}
-                                  className={`border-2 ${getPlaformBorderColor(contest.platform)} text-black text-xs p-1 rounded truncate block hover:opacity-90`}
+                                  className={`border-2 ${getPlatformConfig(contest.platform).border} text-black text-xs p-1 rounded truncate block hover:opacity-90`}
                                   title={`${contest.contestName} - ${formatDate(contest.contestStartDate)}`}
                                 >
                                   {contest.contestName}
