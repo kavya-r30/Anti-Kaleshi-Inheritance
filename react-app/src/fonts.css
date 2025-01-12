@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Fairway-bold";
+  src: url("./assets/fonts/Fairway-bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Fairway-medium";
+  src: url("./assets/fonts/Fairway-medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
