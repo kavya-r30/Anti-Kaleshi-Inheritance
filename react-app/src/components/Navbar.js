@@ -29,7 +29,7 @@ const Navbar = () => {
       <nav className={`w-full transition-all duration-300 ${
         scrolled 
           // ? 'mx-4 my-4 rounded-2xl bg-purple-50/70 dark:bg-gray-900/80 backdrop-blur-md shadow-lg max-w-3xl' 
-          ? 'bg-purple-50 w-full border-b border-gray-200'
+          ? 'bg-purple-50 w-full border-b border-gray-200 shadow'
           : 'bg-purple-50 w-full'
       }`}>
         <div className="px-4 mx-auto">
