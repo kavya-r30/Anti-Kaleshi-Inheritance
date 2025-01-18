@@ -1,67 +1,67 @@
-import React, { useMemo } from 'react';
-import { data } from '../data'
+import React, { useMemo, useRef, useEffect, useState } from 'react';
+import { data } from '../data';
 
 const Heatmap = () => {
   const heatmapData = data.heatmap;
+  const pastSubsRef = useRef(0);
+  const [pastSubs, setPastSubs] = useState(0);  // State to trigger re-render with updated count
 
   const convertTimestamp = (dateStr) => {
     const [year, month, day] = dateStr.split('-').map(num => parseInt(num));
-    return Math.floor(Date.UTC(year, month-1, day, 0, 0, 0) / 1000);
+    return Math.floor(Date.UTC(year, month - 1, day, 0, 0, 0) / 1000);
   };
 
   const monthSize = 6; // 7 months to display
-  let pastSubs = 0;
 
   const generateMonthData = () => {
     const months = [];
     const today = new Date(); 
-    // const today = new Date(new Date().getFullYear(), 11, 31);
     const todayStr = today.toISOString().split('T')[0];
-    
+
     for (let i = monthSize; i >= 0; i--) {
       const monthDate = new Date(today.getFullYear(), today.getMonth() - i, 1);
       const year = monthDate.getFullYear();
       const month = monthDate.getMonth();
-      
+
       const firstDay = new Date(year, month, 1);
       const lastDay = new Date(year, month + 1, 0);
       const weeks = [];
       let currentWeek = Array(7).fill(null);
-      
+
       for (let d = 0; d < firstDay.getDay(); d++) {
         currentWeek[d] = null;
       }
-      
+
       for (let day = 1; day <= lastDay.getDate(); day++) {
         const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         const dayOfWeek = new Date(year, month, day).getDay();
-        
+
         if (date > todayStr) break;
-        
+
         const timestamp = convertTimestamp(date);
         const dayData = heatmapData[timestamp] || { total: 0 };
-        pastSubs += dayData.total;
+        pastSubsRef.current += dayData.total; 
 
         if (currentWeek[dayOfWeek] === null) {
           currentWeek[dayOfWeek] = { date, count: dayData.total, timestamp };
         }
-        
+
         if (dayOfWeek === 6) {
           weeks.push(currentWeek);
           currentWeek = Array(7).fill(null);
         }
       }
-      
+
       if (currentWeek.some(day => day !== null)) {
         weeks.push(currentWeek);
       }
-      
+
       months.push({
         name: monthDate.toLocaleString('default', { month: 'short' }),
         weeks
       });
     }
-    
+
     return months;
   };
 
@@ -75,8 +75,12 @@ const Heatmap = () => {
 
   const months = useMemo(generateMonthData, [heatmapData]);
 
+  useEffect(() => {
+    setPastSubs(pastSubsRef.current);
+  }, [months]);
+
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl">
       <div className="flex gap-2 justify-center items-center">
         {months.map((month) => (
           <div key={month.name} className="flex flex-col">
@@ -107,7 +111,7 @@ const Heatmap = () => {
         <div className="">
           <div className="flex justify-between items-center">
             <span className="text-sm font-medium text-slate-600">
-              {pastSubs} submissions in past { monthSize + 1 } months
+              {pastSubs} submissions in past {monthSize + 1} months
             </span>
           </div>
         </div>
