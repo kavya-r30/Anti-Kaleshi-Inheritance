@@ -4,7 +4,7 @@ import codechef from '../../assets/codechef.svg'
 
 export const TotalContest = () => {
     return (
-        <div className="flex gap-4 p-6 bg-white shadow-lg rounded-xl">
+        <div className="flex gap-4 p-6 bg-white shadow-lg rounded-xl h-full">
             <div className="grid grid-cols-7 gap-6 w-full items-center justify-center">
                 <div className="col-span-2 pl-2 flex flex-col items-center justify-center">
                     <div className="text-lg text-gray-500 font-semibold ">Total</div>
