@@ -40,7 +40,7 @@ const Navbar = () => {
             <div className="w-32 flex">
               <Link to="/" className="text-2xl font-bold">
                 <span className="bg-gradient-to-r from-[#f7b3ba] to-[#daa5f2] bg-clip-text text-transparent">
-                  CodeSync
+                  iCode
                 </span>
               </Link>
             </div>
