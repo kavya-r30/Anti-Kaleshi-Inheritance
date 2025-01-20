@@ -6,6 +6,7 @@ import LandingPage from './components/Landing';
 import Navbar from './components/Navbar';
 import ProfilePage from './components/Profile';
 import { Dashboard } from './components/Dashboard';
+import ChatBot from './components/Chatbot';
 // import LoginPage from './components/login';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LandingPage />} />
           <Route path='/contest-tracker' element={<ContestTracker />} />
-          <Route path='/chatbot' element={<h1>chatbot</h1>} />
+          <Route path='/chatbot' element={<ChatBot />} />
           <Route path='/dicussion' element={<h1>dicussion</h1>} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/login' element={<h1>Auth0 login</h1>} />
