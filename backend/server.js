@@ -50,8 +50,8 @@ app.get('/contact', (req, res) => {
 });
 
 // Protected route (requires authentication)
-app.get('/dashboard', requireAuth, (req, res) => {
-  res.render('dashboard'); // Serve the dashboard for authenticated users
+app.get('/profile', requireAuth, (req, res) => {
+  res.render('profile'); // Serve the dashboard for authenticated users
 });
 
 // Authentication routes
