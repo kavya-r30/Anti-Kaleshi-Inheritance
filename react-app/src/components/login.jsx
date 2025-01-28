@@ -48,9 +48,7 @@ const Login = ({ setIsAuthenticated }) => {
 
   return (
     <div className="min-h-[calc(100vh-3.5rem)] flex bg-purple-50">
-      {/* Left Panel */}
       <div className="hidden lg:flex lg:w-1/2 p-12 pl-20 flex-col justify-between relative overflow-hidden rounded-tr-3xl rounded-br-3xl">
-        {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-700 via-violet-500 to-blue-400 animate-gradient">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
           <div className="absolute inset-0" style={{
@@ -58,7 +56,6 @@ const Login = ({ setIsAuthenticated }) => {
           }}></div>
         </div>
 
-        {/* Content */}
         <div className="relative z-10">
           <div className='mt-6'>
             <h1 className="text-6xl font-bold text-white mb-6 leading-tight">
@@ -90,7 +87,6 @@ const Login = ({ setIsAuthenticated }) => {
         </div>
       </div>
 
-      {/* Right Panel */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           <div className="text-center lg:text-left mb-12">
