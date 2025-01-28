@@ -1,6 +1,6 @@
 import '../fonts.css';
 import React from "react";
-// import { data } from './data'
+import { data } from './data'
 import Heatmap from './dashboard/Heatmap'
 import { Header } from './dashboard/Header';
 import { TotalContest } from './dashboard/TotalContest';
@@ -14,7 +14,7 @@ import MaxRating from './dashboard/MaxRating';
 export const Dashboard = () => {
   return (
     <div className="min-h-screen bg-purple-50">
-      <main className="max-w-screen-xl mx-auto px-24 py-4">
+      <main className="max-w-screen-xl mx-auto px-24 py-4 pb-8">
         <Header />
 
         <div className="grid grid-cols-12 gap-6 mb-6">
@@ -41,14 +41,14 @@ export const Dashboard = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-6">
-          <div className="col-span-1"> 
+          <div className="col-span-1 h-fit"> 
             <Skillset />
           </div>
-          <div className="flex flex-col col-span-1">
-            <div className='pb-6'>
+          <div className="flex flex-col col-span-1 h-full">
+            <div className='pb-6 h-fit'>
               <DailyQuestion />
             </div>
-            <div>
+            <div className='h-full'>
               <MaxRating />
             </div>
           </div>
