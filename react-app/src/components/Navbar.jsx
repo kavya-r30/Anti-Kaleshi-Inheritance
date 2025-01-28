@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,59 +54,52 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
 
             <div className="flex-1 flex justify-center">
               <div className="flex space-x-8">
-                <Link to="/chatbot" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link to="/chatbot" className="text-gray-600 hover:text-blue-600 transition-colors">
                   Chatbot
                 </Link>
-                <Link to="/contest-tracker" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link to="/contest-tracker" className="text-gray-600 hover:text-blue-600 transition-colors">
                   Contest
                 </Link>
-                <Link to="/dashboard" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link to="/dashboard" className="text-gray-600 hover:text-blue-600 transition-colors">
                   Dashboard
                 </Link>
                 <Link
                   to="/discussion"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   Discussion
                 </Link>
               </div>
             </div>
 
-            <div className="w-32 flex items-center justify-end space-x-4">
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              >
-                {isDark ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-
+            <div className="w-36 flex items-center justify-end space-x-4">
               {isAuthenticated ? (
+                <>
                 <button
                   onClick={handleLogout}
-                  className={`px-4 py-2 rounded-lg bg-[#daa5f2] dark:bg-white text-white dark:text-black font-medium hover:bg-purple-400 dark:hover:bg-gray-100 transition-colors ${
+                  className={`px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors ${
                     scrolled ? 'text-sm' : 'text-sm'
                   }`}
                 >
                   Sign Out
                 </button>
+                <Link
+                  to="/profile"
+                  className={`p-2 w-9 h-9 flex items-center justify-center rounded-full bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors \
+                    ${scrolled ? 'text-sm' : 'text-sm'}`}
+                >
+                  <img src="path_to_profile_image" alt="Profile" className="w-7 h-7 rounded-full" />
+                </Link>
+                </>
               ) : (
                 <>
                   <Link
                     to="/login"
-                    className={`px-4 py-2 rounded-lg bg-[#daa5f2] dark:bg-white text-white dark:text-black font-medium hover:bg-purple-400 dark:hover:bg-gray-100 transition-colors ${
+                    className={`px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors ${
                       scrolled ? 'text-sm' : 'text-sm'
                     }`}
                   >
                     Login
-                  </Link>
-
-                  <Link
-                    to="/signup"
-                    className={`px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors ${
-                      scrolled ? 'text-sm' : 'text-sm'
-                    }`}
-                  >
-                    Signup
                   </Link>
                 </>
               )}

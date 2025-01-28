@@ -49,7 +49,7 @@ const Login = ({ setIsAuthenticated }) => {
   return (
     <div className="min-h-[calc(100vh-3.5rem)] flex bg-purple-50">
       <div className="hidden lg:flex lg:w-1/2 p-12 pl-20 flex-col justify-between relative overflow-hidden rounded-tr-3xl rounded-br-3xl">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-700 via-violet-500 to-blue-400 animate-gradient">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-700 via-violet-500 to-blue-900 animate-gradient">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
           <div className="absolute inset-0" style={{
             background: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23fff" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
