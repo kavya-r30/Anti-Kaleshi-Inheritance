@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { data } from '../data'
 import { Calendar, Hash, ExternalLink } from 'lucide-react';
 
 const DailyQuestion = () => {
   const [isVisible, setIsVisible] = useState(false);
   
   const daily = {
-    date: "2025-01-11",
-    link: "https://leetcode.com/problems/construct-k-palindrome-strings/",
-    questionTitle: "Construct K Palindrome Strings",
-    questionId: "1400",
-    difficulty: "Medium",
-    topicTags: ["Hash Table", "String", "Greedy", "Counting"]
+    date: data?.daily?.date || new Date().toISOString().split('T')[0],
+    link: data?.daily?.link || "https://leetcode.com/problemset/",
+    questionTitle: data?.daily?.questionTitle?.length > 30 ? 
+      data.daily.questionTitle.slice(0, 30) + '...' : data.daily.questionTitle || "Daily Challenge",
+    questionId: data?.daily?.questionId || "0001",
+    difficulty: data?.daily?.difficulty || "You",
+    topicTags: data?.daily?.topicTags || ["Are", "Awesome"]
   };
 
   useEffect(() => {
@@ -68,7 +70,7 @@ const DailyQuestion = () => {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {daily.topicTags.slice(0, 4).map((tag, index) => (
+            {daily.topicTags.slice(0, 3).map((tag, index) => (
               <div
                 key={tag}
                 className={`inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-gray-50 to-gray-100
