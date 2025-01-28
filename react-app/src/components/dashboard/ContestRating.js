@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { data } from '../data';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,41 +27,40 @@ ChartJS.register(
 
 const platformConfigs = {
   leetcode: {
-    data: [
-      { contest: "Biweekly 137", rating: 1462, date: "Feb 2024" },
-      { contest: "Weekly 412", rating: 1412.046, date: "Feb 2024" },
-      { contest: "Biweekly 140", rating: 1452.437, date: "Mar 2024" },
-      { contest: "Weekly 418", rating: 1459.351, date: "Mar 2024" },
-      { contest: "Biweekly 141", rating: 1435.695, date: "Mar 2024" },
-      { contest: "Weekly 419", rating: 1447.508, date: "Mar 2024" },
-      { contest: "Biweekly 143", rating: 1472.96, date: "Apr 2024" },
-      { contest: "Weekly 423", rating: 1510.59, date: "Apr 2024" },
-      { contest: "Biweekly 144", rating: 1535.752, date: "Apr 2024" },
-      { contest: "Biweekly 147", rating: 1552.45, date: "May 2024" }
-    ],
+    data: data.leetcode.contests.history.map(contest => ({
+      contest: contest.title.replace('Contest ', ''),
+      rating: Number(contest.rating.toFixed(3)),
+      date: new Date(contest.startTime * 1000).toLocaleDateString('en-US', { 
+        month: 'short', 
+        year: 'numeric' 
+      })
+    })),
     color: '#4CAF50',
     label: 'LeetCode',
     bgColor: 'rgba(76, 175, 80, 0.05)'
   },
   codeforces: {
-    data: [
-      { contest: "Round 981", rating: 420, date: "Mar 2024" },
-      { contest: "Round 988", rating: 712, date: "Apr 2024" }
-    ],
+    data: data.codeforces.contests.map(contest => ({
+      contest: contest.contestName.replace('Codeforces ', ''),
+      rating: contest.newRating,
+      date: new Date(contest.contestId * 1000).toLocaleDateString('en-US', {
+        month: 'short',
+        year: 'numeric'
+      })
+    })),
     color: '#2196F3',
     label: 'Codeforces',
     bgColor: 'rgba(33, 150, 243, 0.05)'
   },
   codechef: {
-    data: [
-      { contest: "START155D", rating: 1074, date: "Feb 2024" },
-      { contest: "START157D", rating: 1230, date: "Feb 2024" },
-      { contest: "START158D", rating: 1330, date: "Mar 2024" },
-      { contest: "START160D", rating: 1445, date: "Mar 2024" },
-      { contest: "START165C", rating: 1516, date: "Apr 2024" },
-      { contest: "START166C", rating: 1496, date: "Apr 2024" },
-      { contest: "START167C", rating: 1571, date: "May 2024" }
-    ],
+    data: data.codechef.contests.map(contest => ({
+      contest: contest.code,
+      rating: Number(contest.rating),
+      date: new Date(contest.code.match(/\d+/)[0] * 1000).toLocaleDateString('en-US', {
+        month: 'short',
+        year: 'numeric'
+      })
+    })),
     color: '#FF9800',
     label: 'CodeChef',
     bgColor: 'rgba(255, 152, 0, 0.05)'
@@ -81,10 +81,10 @@ const RatingTrends = ({ className = "" }) => {
         display: false
       },
       tooltip: {
-        backgroundColor: 'rgba(255, 195, 92, 0.9)',
+        backgroundColor: 'rgba(255, 195, 92)',
         titleColor: 'white',
         bodyColor: 'white',
-        padding: 16,
+        padding: 14,
         cornerRadius: 12,
         displayColors: false,
         titleFont: {
