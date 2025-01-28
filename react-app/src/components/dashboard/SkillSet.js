@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { data } from '../data';
 
 const Skillset = () => {
   const TOP_N = 6;
@@ -6,45 +7,9 @@ const Skillset = () => {
   const [isLoading, setIsLoading] = useState(false);
   
   const skills = {
-    advanced: [
-      { tagName: "Rolling Hash", problemsSolved: 2 },
-      { tagName: "Backtracking", problemsSolved: 13 },
-      { tagName: "Dynamic Programming", problemsSolved: 31 },
-      { tagName: "Divide and Conquer", problemsSolved: 8 },
-      { tagName: "Trie", problemsSolved: 8 },
-      { tagName: "Union Find", problemsSolved: 1 },
-      { tagName: "Binary Indexed Tree", problemsSolved: 1 },
-      { tagName: "Segment Tree", problemsSolved: 3 },
-      { tagName: "Monotonic Stack", problemsSolved: 9 },
-    ],
-    intermediate: [
-      { tagName: "Tree", problemsSolved: 33 },
-      { tagName: "Binary Tree", problemsSolved: 30 },
-      { tagName: "Hash Table", problemsSolved: 61 },
-      { tagName: "Ordered Set", problemsSolved: 4 },
-      { tagName: "Greedy", problemsSolved: 20 },
-      { tagName: "Binary Search", problemsSolved: 36 },
-      { tagName: "Depth-First Search", problemsSolved: 27 },
-      { tagName: "Breadth-First Search", problemsSolved: 17 },
-      { tagName: "Recursion", problemsSolved: 8 },
-      { tagName: "Sliding Window", problemsSolved: 18 },
-      { tagName: "Bit Manipulation", problemsSolved: 18 },
-      { tagName: "Math", problemsSolved: 29 },
-      { tagName: "Design", problemsSolved: 9 },
-      { tagName: "Brainteaser", problemsSolved: 1 },
-    ],
-    fundamental: [
-      { tagName: "Array", problemsSolved: 153 },
-      { tagName: "Matrix", problemsSolved: 10 },
-      { tagName: "String", problemsSolved: 58 },
-      { tagName: "Simulation", problemsSolved: 15 },
-      { tagName: "Enumeration", problemsSolved: 4 },
-      { tagName: "Sorting", problemsSolved: 30 },
-      { tagName: "Stack", problemsSolved: 26 },
-      { tagName: "Queue", problemsSolved: 3 },
-      { tagName: "Linked List", problemsSolved: 22 },
-      { tagName: "Two Pointers", problemsSolved: 38 },
-    ],
+    advanced: data?.leetcode?.skills?.advanced || [],
+    intermediate: data?.leetcode?.skills?.intermediate || [],
+    fundamental: data?.leetcode?.skills?.fundamental || [],
   };
 
   const handleTabChange = (tab) => {
