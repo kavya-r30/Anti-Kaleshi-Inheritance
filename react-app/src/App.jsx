@@ -9,6 +9,7 @@ import { Dashboard } from './components/Dashboard';
 import ChatBot from './components/Chatbot';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import { Devboard } from './components/Devboard';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -44,6 +45,7 @@ function App() {
           <Route path='/contest-tracker' element={<ContestTracker />} />
           <Route path='/chatbot' element={<ChatBot />} />
           <Route path='/discussion' element={<h1>Discussion</h1>} />
+          <Route path='/devboard' element={<Devboard />} />
           <Route
             path='/dashboard'
             element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}

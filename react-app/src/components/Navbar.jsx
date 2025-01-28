@@ -63,10 +63,10 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                 <Link to="/dashboard" className="text-gray-600 hover:text-blue-600 transition-colors">
                   Dashboard
                 </Link>
-                <Link
-                  to="/discussion"
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
-                >
+                <Link to="/devboard" className="text-gray-600 hover:text-blue-600 transition-colors">
+                  Devboard
+                </Link>
+                <Link to="/discussion" className="text-gray-600 hover:text-blue-600 transition-colors">
                   Discussion
                 </Link>
               </div>
