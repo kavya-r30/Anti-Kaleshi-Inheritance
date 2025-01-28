@@ -112,7 +112,7 @@ const ProfilePage = ({ user = {
       <main className="max-w-screen-xl mx-auto px-8 py-4">
         <div className="max-w-7xl mx-auto grid grid-cols-12 gap-4">
           <div className="col-span-4 space-y-4">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4">
               <div className="text-center">
                 <img 
                   src={user.picture}
@@ -129,7 +129,7 @@ const ProfilePage = ({ user = {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4">
               <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Education</h2>
               <div className="space-y-3">
                 {Object.entries(education).map(([key, value]) => (
@@ -148,7 +148,7 @@ const ProfilePage = ({ user = {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4">
               <div className="flex justify-between items-center mb-3">
                 <h2 className="text-lg font-bold text-gray-900 dark:text-white">Bio</h2>
                 <button 
@@ -172,7 +172,7 @@ const ProfilePage = ({ user = {
           </div>
 
           <div className="col-span-8 space-y-4">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Platform IDs</h2>
               <div className="space-y-3">
                 {Object.entries(platforms).map(([platform, baseUrl]) => (
@@ -215,7 +215,7 @@ const ProfilePage = ({ user = {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Social Profiles</h2>
               <div className="space-y-3">
                 {Object.entries(socialPlatforms).map(([platform, baseUrl]) => (
