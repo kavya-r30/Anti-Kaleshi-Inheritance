@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 
 const dbURI = process.env.MONGO_URI;
 mongoose
-  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbURI)
   .then(() => {
     console.log('Connected to MongoDB');
     const PORT = process.env.PORT || 5001;
