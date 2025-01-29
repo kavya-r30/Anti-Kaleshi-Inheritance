@@ -14,7 +14,7 @@ app.use(express.json());
 
 mongoose
   .connect(
-    "mongodb+srv://AntiKaleshi:Kaleshi123@DiscussionForum.cfvfm.mongodb.net/discussionForum?retryWrites=true&w=majority&appName=CodingDashboard"
+    "mongodb+srv://AntiKaleshi:Swayam@DiscussionForum.cfvfm.mongodb.net/discussionForum?retryWrites=true&w=majority&appName=CodingDashboard"
   )
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error: ", err));
