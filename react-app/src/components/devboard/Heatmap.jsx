@@ -5,6 +5,11 @@ const Heatmap = () => {
   const heatmapData = data2.heatmap;
   const pastSubsRef = useRef(0);
   const [pastSubs, setPastSubs] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const convertTimestamp = (dateStr) => {
     const [year, month, day] = dateStr.split('-').map(num => parseInt(num));
@@ -80,10 +85,11 @@ const Heatmap = () => {
   }, [months]);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl">
+    <div className="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 ease-in-out   hover:shadow-xl">
       <div className="flex gap-2 justify-center items-center">
-        {months.map((month) => (
-          <div key={month.name} className="flex flex-col">
+        {months.map((month, index) => (
+          <div key={month.name} className={`flex flex-col transition-all ease-out transformx duration-500 
+              ${isVisible ? '-translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}style={{ transitionDelay: `${index * 25}ms` }}>
             <div className="text-sm font-medium text-gray-800 mb-2 text-center">
               {month.name}
             </div>
