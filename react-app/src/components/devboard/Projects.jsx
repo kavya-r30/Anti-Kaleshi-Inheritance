@@ -12,10 +12,10 @@ const ProjectCard = ({ project, index }) => {
   return (
     <div
       className={`relative backdrop-blur-sm rounded-2xl p-6 transition-all duration-500
-        group bg-gradient-to-br from-white/40 via-white/60 to-white/30
+        group bg-gradient-to-br from-white/40 via-white/60 to-white/30 ease-out shadow-lg
         border border-white/20 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
       style={{
-        animation: `fadeIn 0.5s ease-out ${index * 0.1}s backwards`, transitionDelay: `${index * 150}ms`
+        animation: `fadeIn ${index * 0.1}s backwards`, transitionDelay: `${index * 150}ms`
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl 
@@ -80,7 +80,7 @@ const Projects = () => {
   return (
     <div className="w-full">
         <div className="grid grid-cols-3 gap-8">
-            {repositories.slice(0, 9).map((repo, index) => (
+            {repositories.slice(0, 6).map((repo, index) => (
             <ProjectCard 
                 key={index} 
                 project={repo} 
