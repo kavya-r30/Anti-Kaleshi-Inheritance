@@ -35,6 +35,7 @@ const Login = ({ setIsAuthenticated }) => {
       const data = await res.json();
       if (res.ok) {
         setIsAuthenticated(true);
+        localStorage.setItem('isAuthenticated', 'true');
         navigate('/dashboard');
       } else {
         setError(data.error || 'Login failed');
