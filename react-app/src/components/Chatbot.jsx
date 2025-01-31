@@ -69,6 +69,7 @@ const ChatBot = () => {
       return responseText;
     } catch (error) {
       setError('Failed to generate response. Please try again.');
+      setError('Failed to generate response. Please try again.');
       return null;
     } finally {
       setIsLoading(false);
@@ -87,8 +88,11 @@ const ChatBot = () => {
   };
 
   const quickActions = ['What is my LeetCode rank?', 'How many problems have I solved on LeetCode?'];
+  const quickActions = ['What is my LeetCode rank?', 'How many problems have I solved on LeetCode?'];
 
   return (
+    <div className="flex flex-col pb-10 min-h-screen bg-purple-50">
+      <div className={`flex-1 flex flex-col ${showWelcome ? 'justify-center' : 'justify-end'} px-4 pb-4 overflow-y-auto`}>
     <div className="flex flex-col pb-10 min-h-screen bg-purple-50">
       <div className={`flex-1 flex flex-col ${showWelcome ? 'justify-center' : 'justify-end'} px-4 pb-4 overflow-y-auto`}>
         <div className="w-full max-w-3xl mx-auto">
@@ -145,6 +149,8 @@ const ChatBot = () => {
                       </div>
                     </div>
                   ))}
+                  {isLoading && <div className="p-4 bg-white rounded-lg shadow-sm text-gray-500">Generating response...</div>}
+                  {error && <div className="p-3 bg-red-50 text-red-600 rounded-lg">{error}</div>}
                   {isLoading && <div className="p-4 bg-white rounded-lg shadow-sm text-gray-500">Generating response...</div>}
                   {error && <div className="p-3 bg-red-50 text-red-600 rounded-lg">{error}</div>}
                 </div>
