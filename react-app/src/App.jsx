@@ -12,7 +12,9 @@ import Signup from './components/Signup';
 import { Devboard } from './components/Devboard';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem('isAuthenticated') === 'true'
+  );
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -21,13 +23,17 @@ function App() {
           credentials: 'include',
         });
         if (res.ok) {
-          setIsAuthenticated(true);
+          const data = await res.json();
+          setIsAuthenticated(data.isAuthenticated);
+          localStorage.setItem('isAuthenticated', data.isAuthenticated);
         } else {
           setIsAuthenticated(false);
+          localStorage.removeItem('isAuthenticated');
         }
       } catch (err) {
         console.error('Error checking authentication:', err);
         setIsAuthenticated(false);
+        localStorage.removeItem('isAuthenticated');
       }
     };
 
@@ -41,7 +47,6 @@ function App() {
 
         <Routes>
           <Route path='/' element={<LandingPage />} />
-
           <Route path='/contest-tracker' element={<ContestTracker />} />
           <Route path='/chatbot' element={<ChatBot />} />
           <Route path='/discussion' element={<h1>Discussion</h1>} />
