@@ -167,6 +167,8 @@ Add names of your mentors with their emails and links to their GitHub accounts
 ![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/contestP.png?raw=true)
 ![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/dashboardP.png?raw=true)
 ![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/devboardP.png?raw=true)
+![image](https://github.com/user-attachments/assets/d6f91038-373d-4fd3-aa9a-7934b2013954)
+
 
 
 
