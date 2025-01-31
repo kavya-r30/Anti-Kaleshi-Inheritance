@@ -9,14 +9,14 @@ const requireAuth = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.redirect('/login');
+        res.status(401).json({ isAuthenticated: false });
       } else {
         console.log(decodedToken);
-        next(); 
+        next();
       }
     });
   } else {
-    res.redirect('/login');
+    res.status(401).json({ isAuthenticated: false });
   }
 };
 
@@ -26,7 +26,7 @@ const checkUser = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       if (err) {
-        res.locals.user = null; 
+        res.locals.user = null;
         next();
       } else {
         let user = await User.findById(decodedToken.id);
