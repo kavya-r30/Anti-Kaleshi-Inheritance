@@ -21,31 +21,32 @@ const Signup = ({ setIsAuthenticated }) => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setIsLoading(true);
-    try {
-      const res = await fetch('http://localhost:5001/auth/signup', {
-        method: 'POST',
-        body: JSON.stringify({ name, email, password }),
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setIsAuthenticated(true);
-        navigate('/dashboard');
-      } else {
-        setError(data.error || 'Signup failed');
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setError('');
+      setIsLoading(true);
+      try {
+        const res = await fetch('http://localhost:5001/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password }),
+          credentials: 'include',
+        });
+        const data = await res.json();
+        if (res.ok) {
+          setIsAuthenticated(true);
+          localStorage.setItem('isAuthenticated', 'true'); // Persist in localStorage
+          navigate('/dashboard');
+        } else {
+          setError(data.error || 'Signup failed');
+        }
+      } catch (err) {
+        setError('Network error. Please try again.');
+      } finally {
+        setIsLoading(false);
       }
-    } catch (err) {
-      setError('Network error. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    };
 
   return (
     <div className="min-h-[calc(100vh-3.5rem)] flex bg-purple-50">

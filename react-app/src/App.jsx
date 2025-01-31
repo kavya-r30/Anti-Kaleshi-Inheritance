@@ -12,7 +12,9 @@ import Signup from './components/Signup';
 import { Devboard } from './components/Devboard';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem('isAuthenticated') === 'true'
+  );
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -21,13 +23,17 @@ function App() {
           credentials: 'include',
         });
         if (res.ok) {
-          setIsAuthenticated(true);
+          const data = await res.json();
+          setIsAuthenticated(data.isAuthenticated);
+          localStorage.setItem('isAuthenticated', data.isAuthenticated); // Persist in localStorage
         } else {
           setIsAuthenticated(false);
+          localStorage.removeItem('isAuthenticated'); // Clear on failure
         }
       } catch (err) {
         console.error('Error checking authentication:', err);
         setIsAuthenticated(false);
+        localStorage.removeItem('isAuthenticated'); // Clear on error
       }
     };
 
