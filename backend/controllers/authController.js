@@ -18,7 +18,33 @@ const signup_post = async (req, res) => {
       return res.status(400).json({ error: 'User already exists with this email' });
     }
 
-    const newUser = new User({ name, email: email.toLowerCase(), password });
+    const newUser = new User({
+      name,
+      email: email.toLowerCase(),
+      password,
+      country: '',
+      picture: `https://api.dicebear.com/5.x/identicon/svg?seed=${name}`,
+      bio: '',
+      platforms: {
+        leetcode: '',
+        codeforces: '',
+        codechef: '',
+        geeksforgeeks: '',
+        atcoder: ''
+      },
+      socialLinks: {
+        github: '',
+        twitter: '',
+        linkedin: '',
+        resume: ''
+      },
+      education: {
+        degree: '',
+        university: '',
+        year: ''
+      }
+    });
+
     await newUser.save();
     console.log('User created:', newUser);
 
@@ -31,18 +57,23 @@ const signup_post = async (req, res) => {
     res.cookie('jwt', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 3 * 24 * 60 * 60 * 1000, 
+      sameSite: 'strict',
+      maxAge: 3 * 24 * 60 * 60 * 1000,
     });
 
-    res.status(201).json({ message: 'User registered and logged in' });
+    res.status(201).json({ 
+      message: 'User registered and logged in',
+      user: {
+        name: newUser.name,
+        email: newUser.email
+      }
+    });
   } catch (err) {
     console.error('Signup error:', err);
-
     if (err.name === 'ValidationError') {
       const errorMessage = Object.values(err.errors).map((e) => e.message).join(', ');
       return res.status(400).json({ error: errorMessage });
     }
-
     res.status(500).json({ error: 'Server error' });
   }
 };
@@ -55,20 +86,14 @@ const login_post = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    console.log('Login request body:', req.body);
-
     const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
-      console.log('No user found with email:', email);
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log('Password match:', isMatch);
-
     if (!isMatch) {
-      console.log('Invalid password for user:', email);
-      return res.status(400).json({ error: 'Invalid password' });
+      return res.status(400).json({ error: 'Invalid credentials' });
     }
 
     const token = jwt.sign(
@@ -80,11 +105,17 @@ const login_post = async (req, res) => {
     res.cookie('jwt', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
       maxAge: 3 * 24 * 60 * 60 * 1000,
     });
 
-    console.log('Login successful for user:', email);
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({ 
+      message: 'Login successful',
+      user: {
+        name: user.name,
+        email: user.email
+      }
+    });
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).json({ error: 'Server error' });
@@ -95,6 +126,7 @@ const logout_get = (req, res) => {
   res.clearCookie('jwt', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
   });
   console.log('User logged out');
   res.status(200).json({ message: 'User logged out' });
@@ -108,7 +140,14 @@ const check_auth = async (req, res) => {
       return res.status(401).json({ isAuthenticated: false });
     }
 
+    // Verify the JWT token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Check if the user still exists in the database
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      return res.status(401).json({ isAuthenticated: false });
+    }
 
     res.status(200).json({ isAuthenticated: true });
   } catch (err) {
