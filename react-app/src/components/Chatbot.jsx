@@ -47,7 +47,16 @@ const ChatBot = () => {
         ${JSON.stringify(userData, null, 2)}
 
         User Question: "${userMessage}"
-      `
+
+        Instructions:
+        - Answer strictly based on the provided user data.
+        - Be concise yet informative.
+        - Do not use bold formatting.
+        - If the user asks for rankings or stats, provide direct values.
+        - If the user asks about GitHub, summarize contributions and top repositories.
+        - If the user requests a general summary, provide an overview of activity across platforms.
+        - If specific data is missing, acknowledge it instead of making assumptions.
+        - Use emojis and friendly language to make the response engaging.`
       ;
 
       const response = await axios.post(GEMINI_API_URL, { contents: [{ parts: [{ text: prompt }] }] }, 
