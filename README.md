@@ -164,6 +164,7 @@ Add names of your mentors with their emails and links to their GitHub accounts
 - [Team Member 3 Aniket Suresh Jadhav](https://github.com/DevAniket010): aj230375@gmail.com
 
 ## 📱Screenshots
+![image](https://github.com/user-attachments/assets/e155c72c-a404-4f4e-97b0-8a2c757fef8e)
 ![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/contestP.png?raw=true)
 ![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/dashboardP.png?raw=true)
 ![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/devboardP.png?raw=true)
