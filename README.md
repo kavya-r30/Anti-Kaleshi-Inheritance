@@ -1,8 +1,8 @@
 # Anti-Kaleshi-Inheritance
 
 <h1 align="center">
-  <a href="https://github.com/CommunityOfCoders/Inheritance-2023">
-    <img src="./COC.png" alt="CoC Inheritance 2022" width="500" height="166">
+  <a href="https://github.com/CommunityOfCoders/Inheritance-2024">
+    <img src="./Untitled.png" alt="CoC Inheritance 2024" width="500" height="166">
   </a>
   <br>
   iCode
@@ -62,21 +62,33 @@ Workflow:-
 
 
 ## 🤖Tech-Stack
+<a href="https://www.w3.org/TR/html5/" title="HTML5"><img src="https://github.com/get-icon/geticon/raw/master/icons/html-5.svg" alt="HTML5" width="21px" height="21px"></a>
+<a href="https://www.w3.org/TR/CSS/" title="CSS3"><img src="https://github.com/get-icon/geticon/raw/master/icons/css-3.svg" alt="CSS3" width="21px" height="21px"></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="21px" height="21px"></a>
+<a href="https://reactjs.org/" title="React"><img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="21px" height="21px"></a>
+<a href="https://nodejs.org/" title="Node.js"><img src="https://github.com/get-icon/geticon/raw/master/icons/nodejs-icon.svg" alt="Node.js" width="21px" height="21px"></a>
+<a href="https://expressjs.com/" title="Express"><img src="https://github.com/get-icon/geticon/raw/master/icons/express.svg" alt="Express" width="21px" height="21px"></a>
+<a href="https://www.mongodb.org/" title="MongoDB"><img src="https://github.com/get-icon/geticon/raw/master/icons/mongodb-icon.svg" alt="MongoDB" width="21px" height="21px"></a>
+<a href="https://www.npmjs.com/" title="npm"><img src="https://github.com/get-icon/geticon/raw/master/icons/npm.svg" alt="npm" width="21px" height="21px"></a>
+<a href="https://code.visualstudio.com/" title="Visual Studio Code"><img src="https://github.com/get-icon/geticon/raw/master/icons/visual-studio-code.svg" alt="Visual Studio Code" width="21px" height="21px"></a>
 
 #### Front-end
 
-- React Js
+- HTML
+- CSS
 - Tailwind CSS
-- Javascript
+- JavaScript
+- React
   
 #### Back-end
 
 - NodeJS
 - ExpressJS
+- Mongoose
   
 #### Database
 
-- MongoDB
+- MongoDB Atlas
   
 #### API Management Platform: 
 
@@ -116,17 +128,23 @@ List down all the future plans for the project here
 
 ## 🛠Project Setup
 
-Frontend:-
+1. Clone the GitHub repo.
+```bash
+$ git clone https://github.com/kavya-r30/Anti-Kaleshi-Inheritance.git
+```
+2. To start the frontend server:
+```bash
+  $ cd react-app
+  $ npm install
+  $ npm start
+```
 
-- 
-  
-Backend:-
-
-- Created new account on the MongoDB atlas.
-- Created new project on the atlas platform.
-- Then connected to the project using mongodb database connection string using mongoose in the express app.
-Others can simply fork the repository & then clone it in their machine. Once done they should run 'npm i --force'
-to install all the required dependecies.Then can simply run 'npm run dev' to start the project.
+3. To start the backend server:
+```bash
+  $ cd backend
+  $ npm install
+  $ npm start
+```
 
 ## 💻Usage
 
@@ -146,3 +164,10 @@ Add names of your mentors with their emails and links to their GitHub accounts
 - [Team Member 3 Aniket Suresh Jadhav](https://github.com/DevAniket010): aj230375@gmail.com
 
 ## 📱Screenshots
+![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/contestP.png?raw=true)
+![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/dashboardP.png?raw=true)
+![Screenshot](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance/blob/Kavya/react-app/src/assets/devboardP.png?raw=true)
+
+
+
+
