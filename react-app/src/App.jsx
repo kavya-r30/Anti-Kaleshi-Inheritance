@@ -10,6 +10,7 @@ import ChatBot from './components/Chatbot';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { Devboard } from './components/Devboard';
+import CommunityDiscussions from './components/CommunityDiscussions'; // Import the new Discussions component
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -37,14 +38,15 @@ function App() {
   return (
     <div className="app pt-14">
       <Router>
+        {/* Global Navbar */}
         <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
 
         <Routes>
           <Route path='/' element={<LandingPage />} />
-
           <Route path='/contest-tracker' element={<ContestTracker />} />
           <Route path='/chatbot' element={<ChatBot />} />
-          <Route path='/discussion' element={<h1>Discussion</h1>} />
+          {/* Discussion route that uses the CommunityDiscussions component */}
+          <Route path='/discussion' element={<CommunityDiscussions />} />
           <Route path='/devboard' element={<Devboard />} />
           <Route
             path='/dashboard'
@@ -54,7 +56,6 @@ function App() {
             path='/profile'
             element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />}
           />
-
           <Route
             path='/login'
             element={<Login setIsAuthenticated={setIsAuthenticated} />}
@@ -63,7 +64,6 @@ function App() {
             path='/signup'
             element={<Signup setIsAuthenticated={setIsAuthenticated} />}
           />
-
           <Route path='*' element={<h1>404 - Page Not Found</h1>} />
         </Routes>
       </Router>

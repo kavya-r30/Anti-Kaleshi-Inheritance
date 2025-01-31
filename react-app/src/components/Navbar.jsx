@@ -66,6 +66,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                 <Link to="/devboard" className="text-gray-600 hover:text-blue-600 transition-colors">
                   Devboard
                 </Link>
+                {/* Discussion link */}
                 <Link to="/discussion" className="text-gray-600 hover:text-blue-600 transition-colors">
                   Discussion
                 </Link>
@@ -75,33 +76,31 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
             <div className="w-36 flex items-center justify-end space-x-4">
               {isAuthenticated ? (
                 <>
-                <button
-                  onClick={handleLogout}
-                  className={`px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors ${
-                    scrolled ? 'text-sm' : 'text-sm'
-                  }`}
-                >
-                  Sign Out
-                </button>
-                <Link
-                  to="/profile"
-                  className={`p-2 w-9 h-9 flex items-center justify-center rounded-full bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors \
-                    ${scrolled ? 'text-sm' : 'text-sm'}`}
-                >
-                  <img src="path_to_profile_image" alt="Profile" className="w-7 h-7 rounded-full" />
-                </Link>
-                </>
-              ) : (
-                <>
-                  <Link
-                    to="/login"
+                  <button
+                    onClick={handleLogout}
                     className={`px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors ${
                       scrolled ? 'text-sm' : 'text-sm'
                     }`}
                   >
-                    Login
+                    Sign Out
+                  </button>
+                  <Link
+                    to="/profile"
+                    className={`p-2 w-9 h-9 flex items-center justify-center rounded-full bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors \
+                      ${scrolled ? 'text-sm' : 'text-sm'}`}
+                  >
+                    <img src="path_to_profile_image" alt="Profile" className="w-7 h-7 rounded-full" />
                   </Link>
                 </>
+              ) : (
+                <Link
+                  to="/login"
+                  className={`px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors ${
+                    scrolled ? 'text-sm' : 'text-sm'
+                  }`}
+                >
+                  Login
+                </Link>
               )}
             </div>
           </div>
