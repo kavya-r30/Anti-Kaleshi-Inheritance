@@ -10,6 +10,7 @@ import ChatBot from './components/Chatbot';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { Devboard } from './components/Devboard';
+import DSAQuestions from './components/DSAQuestions';  // New import
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -51,6 +52,7 @@ function App() {
           <Route path='/chatbot' element={<ChatBot />} />
           <Route path='/discussion' element={<h1>Discussion</h1>} />
           <Route path='/devboard' element={<Devboard />} />
+          <Route path='/dsa-questions' element={<DSAQuestions />} /> {/* New route */}
           <Route
             path='/dashboard'
             element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
@@ -59,7 +61,6 @@ function App() {
             path='/profile'
             element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />}
           />
-
           <Route
             path='/login'
             element={<Login setIsAuthenticated={setIsAuthenticated} />}
@@ -68,7 +69,6 @@ function App() {
             path='/signup'
             element={<Signup setIsAuthenticated={setIsAuthenticated} />}
           />
-
           <Route path='*' element={<h1>404 - Page Not Found</h1>} />
         </Routes>
       </Router>
