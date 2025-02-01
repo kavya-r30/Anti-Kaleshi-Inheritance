@@ -3,7 +3,7 @@ import githubP from '../../assets/github.svg'
 import leetcodeP from '../../assets/leetcode.svg'
 import cfP from '../../assets/code-forces.svg'
 import ccP from '../../assets/codechef.svg'
-import gfgP from '../../assets/geeksforgeeks.svg'
+import gfgP from '../../assets/GeeksforGeeks.svg'
 import atcP from '../../assets/atcoder.svg'
 
 const PlatformCurve = () => {
