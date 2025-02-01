@@ -25,8 +25,9 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     try {
-      const res = await fetch('http://localhost:5001/auth/login', {
+      const res = await fetch(`${backendUrl}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
