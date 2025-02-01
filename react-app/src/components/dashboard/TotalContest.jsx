@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { data } from '../data';
+import React, { useState, useEffect, useMemo } from 'react';
 import leetcode from '../../assets/leetcode.svg';
 import codeforces from '../../assets/code-forces.svg';
 import codechef from '../../assets/codechef.svg';
 
-export const TotalContest = () => {
+export const TotalContest = (userData) => {
     const [isVisible, setIsVisible] = useState(false);
+    const data = useMemo(() => userData.userData, [userData]);
 
     const leetcodeContest = data?.leetcode?.contests?.stats?.attended || 0;
     const codechefContest = data?.codechef?.contests?.length || 0;
