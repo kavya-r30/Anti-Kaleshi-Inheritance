@@ -7,8 +7,8 @@ import Navbar from './components/Navbar';
 import ProfilePage from './components/Profile';
 import { Dashboard } from './components/Dashboard';
 import ChatBot from './components/Chatbot';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Login from './components/login';
+import Signup from './components/signup';
 import { Devboard } from './components/Devboard';
 import DSAQuestions from './components/DSAQuestions';
 
