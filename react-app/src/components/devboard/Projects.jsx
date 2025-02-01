@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Star, GitFork, Tag, ExternalLink, Github } from 'lucide-react';
-import { data2 } from '../data2';
 
 const ProjectCard = ({ project, index }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -74,8 +73,9 @@ const ProjectCard = ({ project, index }) => {
   );
 };
 
-const Projects = () => {
-  const repositories = data2?.repositories?.topRepos || [];
+const Projects = (githubData) => {
+  const data = useMemo(() => githubData.githubData, [githubData]);
+  const repositories = data?.repositories?.topRepos || [];
 
   return (
     <div className="w-full">

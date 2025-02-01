@@ -1,8 +1,9 @@
 import React, { useMemo, useRef, useEffect, useState } from 'react';
-import { data2 } from '../data2';
 
-const Heatmap = () => {
-  const heatmapData = data2.heatmap;
+const Heatmap = (githubData) => {
+  const data = useMemo(() => githubData.githubData, [githubData]);
+  const heatmapData = data.heatmap;
+  
   const pastSubsRef = useRef(0);
   const [pastSubs, setPastSubs] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
