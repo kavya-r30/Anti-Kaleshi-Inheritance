@@ -4,6 +4,7 @@ import PlatformCurve from './landing/PlatformCurve';
 import dashboardP from '../assets/dashboardP.png'
 import devboardP from '../assets/devboardP.png'
 import contestP from '../assets/contestP.png'
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   const FeaturePoint = ({ children }) => (
@@ -17,26 +18,28 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen">
-      <header className="pt-24 pb-20 text-center px-4 bg-gradient-to-b from-purple-50 
+      <header className="pt-20 pb-20 text-center px-4 bg-gradient-to-b from-purple-50 
           via-slate-50 to-white relative overflow-hidden">
         <div className="relative">
           <h1 className="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r 
-            from-purple-600 via-indigo-600 to-blue-600 mb-8">
+            from-purple-500 via-purple-600 to-purple-500 mb-8">
             Track. Code. Excel.
           </h1>
-          <p className="text-2xl text-slate-700 max-w-5xl mx-auto px-8 leading-relaxed mb-12">
+          <p className="text-2xl text-slate-700 max-w-5xl mx-auto px-8 leading-relaxed mb-9">
           Track your competitive programming journey with powerful analytics and insights. 
           Monitor your progress across multiple platforms, analyze your performance, and 
           identify areas for improvement.
           </p>
           <div className="flex items-center justify-center gap-6">
-            <button className="px-10 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white 
-              rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105 
-              transition-all duration-300 flex items-center gap-3 group"
-            >
-              Get Started
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <Link to='/dashboard'>
+              <button className="px-10 py-4 bg-gradient-to-r from-purple-600 to-indigo-500 text-white 
+                rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105 
+                transition-all duration-300 flex items-center gap-3 group"
+              >
+                Get Started
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -132,8 +135,8 @@ const LandingPage = () => {
         </section>
       </main>
 
-      <footer className="bg-gradient-to-r from-slate-900 to-purple-900 text-white py-24">
-        <div className="max-w-4xl mx-auto px-8 text-center">
+      <footer className="bg-gradient-to-b from-purple-700 to-purple-950 text-white py-24">
+        <div className="max-w-5xl mx-auto px-8 text-center">
           <h3 className="text-5xl font-bold mb-8">
             Ready to Transform Your Coding Journey?
           </h3>
@@ -141,10 +144,12 @@ const LandingPage = () => {
             Join thousands of developers who are already taking their coding skills to the next level.
           </p>
           <div className="flex items-center justify-center gap-6">
-            <button className="px-10 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3 group">
-              Get Started Now
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <Link to='/dashboard'>
+              <button className="px-10 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3 group">
+                Get Started Now
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </div>
         </div>
       </footer>
