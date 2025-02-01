@@ -19,8 +19,9 @@ function App() {
 
   useEffect(() => {
     const checkAuth = async () => {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL;
       try {
-        const res = await fetch('http://localhost:5001/auth/check', {
+        const res = await fetch(`${backendUrl}/auth/check`, {
           credentials: 'include',
         });
         if (res.ok) {
