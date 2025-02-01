@@ -9,7 +9,7 @@
 </h1>
 
 <div align="center">
-   <strong>iCode</strong> - All in One Coding Progress and Development Dashboard<br>
+   <strong>iCode</strong> - All in ONE Coding Progress and Development Dashboard<br>
   CoC Inheritance 2024 <br> <br>
 </div>
 <hr>
@@ -46,11 +46,6 @@ Personalized Learning Dashboard: Visualize coding statistics, problem-solving tr
 
 The platform facilitates a comprehensive developer growth environment, enabling users to centralize their coding journey, enhance learning, and connect with a community of like-minded developers.
 
-Workflow:-
-
-
-
-1. Include features and their usecases in bullet points
    
 ## 🔗Links
 - [GitHub Repository](https://github.com/kavya-r30/Anti-Kaleshi-Inheritance)
@@ -111,8 +106,6 @@ List down all the fully implemented features in your project
 - [x] AI-powered chatbot to ask questions they have regarding their coding journey and it can even provide users with questions on which they should focus based on their current problem solving progress.
 - [x] Graphs and Charts to track the progress of a user to correctly gauge his skills and to show users journey along the way.
 
-      
-List down all the partially implemented features in your project
 
       
 ## 🔮Future Scope
@@ -124,6 +117,7 @@ List down all the future plans for the project here
 
   
 ## 💸Applications
+All in one hub: user can keep a track of their coding and development progress without having to multitask between various platforms.
 
 
 ## 🛠Project Setup
@@ -145,8 +139,6 @@ $ git clone https://github.com/kavya-r30/Anti-Kaleshi-Inheritance.git
   $ npm install
   $ npm start
 ```
-
-## 💻Usage
 
   
 ## 👨‍💻Team Members
