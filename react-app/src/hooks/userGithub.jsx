@@ -31,7 +31,8 @@ export const useGithubData = () => {
   };
 
   const fetchUsername = async () => {
-    const response = await axios.get('http://localhost:5001/api/profile', {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const response = await axios.get(`${backendUrl}/api/profile`, {
       withCredentials: true
     });
     
@@ -54,9 +55,9 @@ export const useGithubData = () => {
       if (!validUsername) {
         throw new Error('No GitHub username available');
       }
-
+      const apiUrl = import.meta.env.VITE_USER_API_URL;
       const response = await fetch(
-        `https://user-api-kavya.onrender.com/api/github/${validUsername}`,
+        `${apiUrl}/github/${validUsername}`,
         {
           method: 'GET',
           headers: {

@@ -20,7 +20,8 @@ export const useProfileData = () => {
         }
       }
 
-      const profileRes = await fetch('http://localhost:5001/api/profile', {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL;
+      const profileRes = await fetch(`${backendUrl}/api/profile`, {
         credentials: 'include'
       });
       const profile = await profileRes.json();
@@ -29,10 +30,11 @@ export const useProfileData = () => {
 
       if (profile?.profile?.platforms) {
         const platforms = profile.profile.platforms;
+        const apiUrl = import.meta.env.VITE_USER_API_URL;
         if (Object.values(platforms).some(v => v)) {
           try {
             const platformRes = await fetch(
-              `https://user-api-kavya.onrender.com/api/user?${new URLSearchParams({
+              `${apiUrl}/user?${new URLSearchParams({
                 lc: platforms.leetcode || '',
                 cf: platforms.codeforces || '',
                 cc: platforms.codechef || '',
@@ -51,9 +53,10 @@ export const useProfileData = () => {
 
       const githubUsername = profile?.profile?.socialLinks?.github;
       if (githubUsername) {
+        const apiUrl = import.meta.env.VITE_USER_API_URL;
         try {
           const githubRes = await fetch(
-            `https://user-api-kavya.onrender.com/api/github/${githubUsername}`
+            `${apiUrl}/github/${githubUsername}`
           );
           if (githubRes.ok) {
             results.github = await githubRes.json();

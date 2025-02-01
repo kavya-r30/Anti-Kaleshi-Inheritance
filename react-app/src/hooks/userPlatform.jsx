@@ -41,7 +41,8 @@ export const usePlatformData = () => {
   };
 
   const fetchUsernames = async () => {
-    const response = await axios.get('http://localhost:5001/api/profile', {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const response = await axios.get(`${backendUrl}/api/profile`, {
       withCredentials: true
     });
     
@@ -61,9 +62,9 @@ export const usePlatformData = () => {
         // console.log(validUsernames);
         setPlatformUsernames(validUsernames);
       }
-
+      const apiUrl = import.meta.env.VITE_USER_API_URL;
       const response = await fetch(
-        `https://user-api-kavya.onrender.com/api/user?lc=${validUsernames.leetcode}&cf=${validUsernames.codeforces}&cc=${validUsernames.codechef}&gfg=${validUsernames.geeksforgeeks}&atc=${validUsernames.atcoder}`,
+        `${apiUrl}/user?lc=${validUsernames.leetcode}&cf=${validUsernames.codeforces}&cc=${validUsernames.codechef}&gfg=${validUsernames.geeksforgeeks}&atc=${validUsernames.atcoder}`,
         {
           method: 'GET',
           headers: {
