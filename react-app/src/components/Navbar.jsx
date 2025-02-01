@@ -71,7 +71,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                   Discussion
                 </Link>
                 <Link to="/dsa-questions" className="text-gray-600 hover:text-blue-600 transition-colors">
-                  Solve
+                  Resource
                 </Link>
               </div>
             </div>

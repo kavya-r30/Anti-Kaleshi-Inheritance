@@ -10,7 +10,7 @@ import ChatBot from './components/Chatbot';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { Devboard } from './components/Devboard';
-import DSAQuestions from './components/DSAQuestions';  // New import
+import DSAQuestions from './components/DSAQuestions';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -52,7 +52,7 @@ function App() {
           <Route path='/chatbot' element={<ChatBot />} />
           <Route path='/discussion' element={<h1>Discussion</h1>} />
           <Route path='/devboard' element={<Devboard />} />
-          <Route path='/dsa-questions' element={<DSAQuestions />} /> {/* New route */}
+          <Route path='/dsa-questions' element={<DSAQuestions />} />
           <Route
             path='/dashboard'
             element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
