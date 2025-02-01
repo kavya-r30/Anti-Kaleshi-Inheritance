@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Fairway-bold";
+  src: url("./assets/fonts/Fairway-bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Fairway-medium";
+  src: url("./assets/fonts/Fairway-medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Noto-bold";
+  src: url("./assets/fonts/NotoSans-ExtraBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Notoc-bold";
+  src: url("./assets/fonts/NotoSans_ExtraCondensed-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Notoc-sbold";
+  src: url("./assets/fonts/NotoSans_ExtraCondensed-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
