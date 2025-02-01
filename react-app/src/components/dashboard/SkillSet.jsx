@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { data } from '../data';
+import React, { useState, useMemo } from 'react';
 
-const Skillset = () => {
+const Skillset = (userData) => {
   const TOP_N = 6;
   const [activeTab, setActiveTab] = useState('advanced');
   const [isLoading, setIsLoading] = useState(false);
+  const data = useMemo(() => userData.userData, [userData]);
   
   const skills = {
     advanced: data?.leetcode?.skills?.advanced || [],
