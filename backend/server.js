@@ -13,8 +13,8 @@ const app = express();
 
 const originBaseUrl = process.env.ORIGIN_BASE_URL || 'http://localhost:5173';
 const allowedOrigins = [
-  'https://icode-anti.vercel.app',
   'https://icode-git-kavya2-kavya-r30s-projects.vercel.app',
+  'https://icode-anti.vercel.app',
   'http://localhost:5173'
 ];
 
