@@ -6,7 +6,7 @@ import Projects from './devboard/Projects';
 import { useGithubData } from '../hooks/userGithub'
 
 const LoadingSpinner = () => (
-  <div className="bg-purple-50 flex w-full h-screen items-center justify-center p-8">
+  <div className="bg-gradient-to-b from-purple-50 to-slate-50 flex w-full h-screen items-center justify-center p-8">
     <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
   </div>
 );
