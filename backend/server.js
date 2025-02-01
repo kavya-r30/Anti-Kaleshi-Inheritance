@@ -16,14 +16,16 @@ app.use(cors({
   origin: process.env.ORIGIN_BASE_URL,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+  exposedHeaders: ['set-cookie'],
+}))
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.set('view engine', 'ejs');
+app.options('*', cors());
 
 const dbURI = process.env.MONGO_URI;
 mongoose
@@ -40,6 +42,9 @@ mongoose
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Origin', process.env.ORIGIN_BASE_URL);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,Cookie');
   next();
 });
 
@@ -57,18 +62,21 @@ app.get('/contact', (req, res) => {
 
 app.get('/auth/check', (req, res) => {
   const token = req.cookies.jwt;
+  console.log('Checking auth, token:', token);
 
   if (!token) {
-    return res.json({ isAuthenticated: false });
+    console.log('No token found');
+    return res.status(401).json({ isAuthenticated: false });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
-    if (err) {
-      return res.json({ isAuthenticated: false });
-    } else {
-      return res.json({ isAuthenticated: true });
-    }
-  });
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('Token verified:', decoded);
+    res.json({ isAuthenticated: true });
+  } catch (err) {
+    console.error('Token verification failed:', err);
+    res.status(401).json({ isAuthenticated: false });
+  }
 });
 
 app.use('/auth', authRoutes);

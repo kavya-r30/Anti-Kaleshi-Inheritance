@@ -83,10 +83,17 @@ const ProfilePage = () => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     try {
       setLoading(true);
-      const response = await axios.get(`${backendUrl}/api/profile`, {
-        withCredentials: true
+      console.log('Current cookies:', document.cookie);
+
+      const response = await fetch(`${backendUrl}/api/profile`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
-      
+
+      console.log('Profile response:', response.data);
       const { profile } = response.data;
       
       setUserData({
