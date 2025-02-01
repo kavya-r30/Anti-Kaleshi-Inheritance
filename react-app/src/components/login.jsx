@@ -36,7 +36,7 @@ const Login = ({ setIsAuthenticated }) => {
       if (res.ok) {
         setIsAuthenticated(true);
         localStorage.setItem('isAuthenticated', 'true');
-        navigate('/dashboard');
+        navigate('/');
       } else {
         setError(data.error || 'Login failed');
       }
