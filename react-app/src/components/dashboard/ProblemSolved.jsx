@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { data } from '../data';
+import React, { useState, useEffect, useMemo } from 'react';
 
 const ProgressRing = ({ segments, total, size = 120, strokeWidth = 12 }) => {
   const radius = (size - strokeWidth) / 2;
@@ -77,7 +76,9 @@ const StatSection = ({ title, data }) => {
   );
 };
 
-const ProblemsSolved = () => {
+const ProblemsSolved = (userData) => {
+  const data = useMemo(() => userData.userData, [userData]);
+  
   const fundamentalsData = [
     { label: 'School', value: (data?.geeksforgeeks?.submissions?.school || 0), color: '#facc15' },
     { label: 'Basic', value: (data?.geeksforgeeks?.submissions?.basic || 0), color: '#4ade80' }
