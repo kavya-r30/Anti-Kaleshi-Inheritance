@@ -154,4 +154,5 @@ Add names of your mentors with their emails and links to their GitHub accounts
 - [Team Member 3 Aniket Suresh Jadhav](https://github.com/DevAniket010): aj230375@gmail.com
 
 ## 📱Screenshots
-https://drive.google.com/drive/folders/19lQQr8Ud7g695mZ1n5BBWwKUTzEsCQqq?usp=share_link
+![image](https://drive.google.com/file/d/1woRXCUYGKQElil4Dgj63bVc7yyqu0Zpy/view)
+
