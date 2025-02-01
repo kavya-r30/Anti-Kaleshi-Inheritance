@@ -46,7 +46,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
           }`}>
             <div className="w-32 flex">
               <Link to="/" className="text-2xl font-bold">
-                <span className="bg-gradient-to-r from-[#f7b3ba] to-[#daa5f2] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-purple-600 via-purple-500 to-purple-400 bg-clip-text text-transparent">
                   iCode
                 </span>
               </Link>
@@ -77,7 +77,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                 <>
                 <button
                   onClick={handleLogout}
-                  className={`px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors ${
+                  className={`px-4 py-2 rounded-lg bg-purple-500 text-white font-medium hover:bg-purple-700 transition-colors ${
                     scrolled ? 'text-sm' : 'text-sm'
                   }`}
                 >
@@ -85,17 +85,17 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                 </button>
                 <Link
                   to="/profile"
-                  className={`p-2 w-9 h-9 flex items-center justify-center rounded-full bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors \
+                  className={`p-2 w-9 h-9 flex items-center justify-center rounded-full bg-purple-500 text-white font-medium hover:bg-purple-700 transition-colors \
                     ${scrolled ? 'text-sm' : 'text-sm'}`}
                 >
-                  <img src="path_to_profile_image" alt="Profile" className="w-7 h-7 rounded-full" />
+                  <img src="https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=Jude&backgroundColor=ffdbb4" alt="Profile" className="w-8 h-8 rounded-full" />
                 </Link>
                 </>
               ) : (
                 <>
                   <Link
                     to="/login"
-                    className={`px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors ${
+                    className={`px-4 py-2 rounded-lg bg-purple-500 text-white font-medium hover:bg-purple-700 transition-colors ${
                       scrolled ? 'text-sm' : 'text-sm'
                     }`}
                   >
