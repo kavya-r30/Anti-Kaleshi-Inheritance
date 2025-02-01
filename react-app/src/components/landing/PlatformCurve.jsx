@@ -4,7 +4,7 @@ import leetcodeP from '../../assets/leetcode.svg'
 import cfP from '../../assets/code-forces.svg'
 import ccP from '../../assets/codechef.svg'
 import gfgP from '../../assets/GeeksforGeeks.svg'
-import atcP from '../../assets/atcoder.svg'
+import atcP from '../../assets/atCoder.svg'
 
 const PlatformCurve = () => {
   const platforms = [
