@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { data } from '../data'
+import React, { useState, useEffect, useMemo } from 'react';
 import { Calendar, Hash, ExternalLink } from 'lucide-react';
 
-const DailyQuestion = () => {
+const DailyQuestion = (userData) => {
   const [isVisible, setIsVisible] = useState(false);
+  const data = useMemo(() => userData.userData, [userData]);
   
   const daily = {
     date: data?.daily?.date || new Date().toISOString().split('T')[0],
