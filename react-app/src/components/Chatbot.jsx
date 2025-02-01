@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send } from 'lucide-react';
 import axios from 'axios';
+import { useProfileData } from '../hooks/useChatbot'
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
@@ -18,24 +19,22 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const fetchUserData = async () => {
-    try {
-      const response = await axios.get(
-        'https://user-api-kavya.onrender.com/api/user?lc=kevinz56&cf=kevinz56&cc=kevin_56&gfg=kevinshfpn1&atc='
-      );
-      console.log('API Response:', response.data);
-      return response.data;
-    } catch (error) {
-      setError('Failed to fetch user data. Please try again.');
-      return null;
-    }
-  };
+  const { data, loading, refresh } = useProfileData();
+  // console.log(data);
+
+  const LoadingSpinner = () => (
+    <div className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-b from-purple-50 to-slate-50 flex w-full h-screen items-center justify-center p-8">
+      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+    </div>
+  );
+
+  if (loading) return <LoadingSpinner />;
 
   const fetchResponse = async (userMessage) => {
     try {
       setIsLoading(true);
       setError(null);
-      const userData = await fetchUserData();
+      const userData = data;
       if (!userData) return 'Failed to fetch user data. Please try again.';
       console.log(userData);
 
@@ -54,9 +53,11 @@ const ChatBot = () => {
         - Do not use bold formatting.
         - If the user asks for rankings or stats, provide direct values.
         - If the user asks about GitHub, summarize contributions and top repositories.
-        - If the user requests a general summary, provide an overview of activity across platforms.
+        - If the user requests a descriptive summary, provide an overview of activity across platforms.
         - If specific data is missing, acknowledge it instead of making assumptions.
-        - Use emojis and friendly language to make the response engaging.`
+        - Use emojis and friendly language to make the response engaging.
+        - Only If user asks for Code provide the Python or C++ code of that Question with proper Identation 
+          along with its description and working`
       ;
 
       const response = await axios.post(GEMINI_API_URL, { contents: [{ parts: [{ text: prompt }] }] }, 
@@ -89,7 +90,7 @@ const ChatBot = () => {
   const quickActions = ['What is my LeetCode rank?', 'How many problems have I solved on LeetCode?'];
 
   return (
-    <div className="flex flex-col pb-10 min-h-screen bg-purple-50">
+    <div className="flex flex-col pb-10 min-h-[calc(100vh-3.5rem)] bg-gradient-to-b from-purple-50 to-slate-50">
       <div className={`flex-1 flex flex-col ${showWelcome ? 'justify-center' : 'justify-end'} px-4 pb-4 overflow-y-auto`}>
         <div className="w-full max-w-3xl mx-auto">
           {showWelcome && (
@@ -109,7 +110,7 @@ const ChatBot = () => {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder="Ask about your coding profile..."
-                      className="flex-1 p-3 bg-purple-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-200"
+                      className="flex-1 p-3 bg-slate-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-200"
                       onKeyPress={(e) => e.key === 'Enter' && handleSend(input)}
                     />
                     <button
@@ -155,7 +156,7 @@ const ChatBot = () => {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder="Message CodeProfile AI..."
-                      className="flex-1 p-2 bg-purple-50 rounded-lg focus:outline-none"
+                      className="flex-1 p-3 bg-slate-100 rounded-lg focus:outline-none"
                       onKeyPress={(e) => e.key === 'Enter' && handleSend(input)}
                     />
                     <button
