@@ -12,7 +12,12 @@ dotenv.config();
 const app = express();
 
 const originBaseUrl = process.env.ORIGIN_BASE_URL || 'http://localhost:5173';
-app.use(cors({ origin: originBaseUrl, credentials: true }));
+app.use(cors({
+  origin: process.env.ORIGIN_BASE_URL,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,6 +37,11 @@ mongoose
     console.error('MongoDB connection error:', err);
     process.exit(1);
   });
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 
 app.get('/', (req, res) => {
   res.render('landing');

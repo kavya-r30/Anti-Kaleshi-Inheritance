@@ -4,37 +4,42 @@ const User = require('../models/User');
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
+  
+  if (!token) {
+    console.log('No token found in cookies');
+    return res.status(401).json({ isAuthenticated: false });
+  }
 
-  if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
-      if (err) {
-        console.log(err.message);
-        res.status(401).json({ isAuthenticated: false });
-      } else {
-        console.log(decodedToken);
-        next();
-      }
-    });
-  } else {
+  try {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decodedToken;
+    console.log('Token verified successfully:', decodedToken);
+    next();
+  } catch (err) {
+    console.log('Token verification failed:', err.message);
     res.status(401).json({ isAuthenticated: false });
   }
 };
 
-const checkUser = (req, res, next) => {
+const checkUser = async (req, res, next) => {
   const token = req.cookies.jwt;
 
-  if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
-      if (err) {
-        res.locals.user = null;
-        next();
-      } else {
-        let user = await User.findById(decodedToken.id);
-        res.locals.user = user;
-        next();
-      }
-    });
-  } else {
+  if (!token) {
+    res.locals.user = null;
+    return next();
+  }
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decodedToken.id).select('-password');
+    if (!user) {
+      res.locals.user = null;
+    } else {
+      res.locals.user = user;
+    }
+    next();
+  } catch (err) {
+    console.log('Check user error:', err.message);
     res.locals.user = null;
     next();
   }
