@@ -218,7 +218,6 @@ const ProfilePage = () => {
       
       <main className="max-w-screen-xl mx-auto px-8 py-4">
         <div className="max-w-7xl mx-auto grid grid-cols-12 gap-6">
-          {/* Left Column */}
           <div className="col-span-4 space-y-6">
             <div className="bg-white rounded-2xl shadow-xl p-6 transform transition-all hover:scale-[1.02]">
               <div className="text-center">
@@ -242,9 +241,8 @@ const ProfilePage = () => {
               </div>
             </div>
 
-            {/* Education Section */}
             <div className="bg-white rounded-2xl shadow-xl p-6 transform transition-all hover:scale-[1.02]">
-              <h2 className="text-lg font-bold text-gray-900 mb-4">Education</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Education</h2>
               <div className="space-y-4">
                 {Object.entries(education).map(([key, value]) => (
                   <div key={key} className="space-y-2">
@@ -261,7 +259,7 @@ const ProfilePage = () => {
                 ))}
                 <button
                   onClick={saveProfile}
-                  className="w-full mt-4 px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-lg flex items-center justify-center space-x-2 transition-all hover:from-purple-600 hover:to-blue-600 hover:shadow-lg"
+                  className="w-full mt-4 px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-400 text-white rounded-lg flex items-center justify-center space-x-2 transition-all hover:from-purple-600 hover:to-blue-600 hover:shadow-lg"
                 >
                   <Save size={18} />
                   <span>Save Education</span>
@@ -269,7 +267,6 @@ const ProfilePage = () => {
               </div>
             </div>
 
-            {/* Bio Section */}
             <div className="bg-white rounded-2xl shadow-xl p-6 transform transition-all hover:scale-[1.02]">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-bold text-gray-900">Bio</h2>
@@ -293,9 +290,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          {/* Right Column */}
           <div className="col-span-8 space-y-6">
-            {/* Platform IDs Section */}
             <div className="bg-white rounded-2xl shadow-xl p-6 transform transition-all hover:scale-[1.02]">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Platform IDs</h2>
               <div className="space-y-4">
@@ -339,7 +334,6 @@ const ProfilePage = () => {
               </div>
             </div>
 
-            {/* Social Profiles Section */}
             <div className="bg-white rounded-2xl shadow-xl p-6 transform transition-all hover:scale-[1.02]">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Social Profiles</h2>
               <div className="space-y-4">
