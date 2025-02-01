@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { data } from '../data'
+import React, { useState, useEffect, useMemo } from 'react';
 import { Github, GitCommitVertical, GitPullRequestArrow } from 'lucide-react';
 
-export const Header = () => {
+export const Header = (githubData) => {
     const [isVisible, setIsVisible] = useState(false);
+    const data = useMemo(() => githubData.githubData, [githubData]);
 
-    const totalSolved = ( data.leetcode?.profile?.totalSolved || 0 ) + ( data.codeforces?.profile?.totalSolved || 0 ) +
-                        ( data.codechef?.profile?.totalSolved || 0 ) + ( data.geeksforgeeks?.profile?.totalSolved || 0 );
-
-    let totalSubmission = data?.codeforces?.profile?.totalSubmissions || 0;
-    Object.values(data?.heatmap)?.forEach(timestamp => {
-        totalSubmission += timestamp.total;
-    });
-
-    const activeDays = Object.keys(data?.heatmap)?.length || 0;
+    const totalContribution = data?.profile?.totalContributions || 0;
+    const totalCommits = data?.profile?.totalCommits || 0;
+    const totalPull = data?.profile?.totalPRs || 0;
 
     useEffect(() => {
         setIsVisible(true);
@@ -30,7 +24,7 @@ export const Header = () => {
                 <div className="text-md text-gray-500 font-semibold">Total Contribution</div>
                 <div className={`text-6xl text-gray-600 col-span-2 text-right transition-all duration-500 
                     ease-out transform ${isVisible ? '-translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
-                    style={{ fontFamily: 'Fairway-medium' }}>{ totalSolved }</div>
+                    style={{ fontFamily: 'Fairway-medium' }}>{ totalContribution }</div>
             </div>
           </div>
 
@@ -43,7 +37,7 @@ export const Header = () => {
                 <div className="text-md text-gray-500 font-semibold">Total Commits</div>
                 <div className={`text-6xl text-gray-600 col-span-2 text-right transition-all duration-500 
                     ease-out transform ${isVisible ? '-translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
-                    style={{ fontFamily: 'Fairway-medium' }}>{ totalSubmission }</div>
+                    style={{ fontFamily: 'Fairway-medium' }}>{ totalCommits }</div>
             </div>
           </div>
 
@@ -56,7 +50,7 @@ export const Header = () => {
                 <div className="text-md text-gray-500 font-semibold">Total Pull Request</div>
                 <div className={`text-6xl text-gray-600 col-span-2 text-right transition-all duration-500 
                     ease-out transform ${isVisible ? '-translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
-                    style={{ fontFamily: 'Fairway-medium' }}>{ activeDays }</div>
+                    style={{ fontFamily: 'Fairway-medium' }}>{ totalPull }</div>
             </div>
           </div>
         </div>
