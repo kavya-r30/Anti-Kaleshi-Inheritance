@@ -28,7 +28,7 @@ const Signup = ({ setIsAuthenticated }) => {
       setIsLoading(true);
       const backendUrl = import.meta.env.VITE_BACKEND_URL;
       try {
-        const res = await fetch(`${API_URL}/auth/login`, {
+        const res = await fetch(`${backendUrl}/auth/signup`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, password }),

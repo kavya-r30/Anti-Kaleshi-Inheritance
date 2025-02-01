@@ -18,8 +18,9 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   }, [scrolled]);
 
   const handleLogout = async () => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     try {
-      const res = await fetch('http://localhost:5001/auth/logout', {
+      const res = await fetch(`${backendUrl}/auth/logout`, {
         method: 'GET',
         credentials: 'include',
       });
