@@ -19,8 +19,7 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const { data, loading, refresh } = useProfileData();
-  // console.log(data);
+  const { data, loading } = useProfileData();
 
   const LoadingSpinner = () => (
     <div className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-b from-purple-50 to-slate-50 flex w-full h-screen items-center justify-center p-8">
@@ -36,9 +35,9 @@ const ChatBot = () => {
       setError(null);
       const userData = data;
       if (!userData) return 'Failed to fetch user data. Please try again.';
-      console.log(userData);
+      // console.log(userData);
 
-      const GEMINI_API_KEY = 'AIzaSyAh_1hnJT8YOTLmd1YhOpf1yVvbU6ZWGQg';
+      const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
       const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
 
       const prompt = `
@@ -48,7 +47,7 @@ const ChatBot = () => {
         User Question: "${userMessage}"
 
         Instructions:
-        - Answer strictly based on the provided user data.
+        - Answer based on the provided user data and Question.
         - Be concise yet informative.
         - Do not use bold formatting.
         - If the user asks for rankings or stats, provide direct values.
@@ -64,7 +63,6 @@ const ChatBot = () => {
         { headers: { 'Content-Type': 'application/json' } });
       let responseText = response.data.candidates[0].content.parts[0].text;
 
-      // Replace '**' with empty string and handle new lines properly
       responseText = responseText.replace(/\*\*/g, '').replace(/\\n/g, '\n');
 
       return responseText;
@@ -139,7 +137,7 @@ const ChatBot = () => {
                 <div className="space-y-4">
                   {messages.map((message, index) => (
                     <div key={index} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`p-3 rounded-lg max-w-[80%] ${message.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-white text-gray-800'}`}>
+                      <div className={`p-3 rounded-xl max-w-[80%] ${message.sender === 'user' ? 'bg-purple-500 text-white' : 'bg-fuchsia-100 text-gray-800'}`}>
                         {message.text.split('\n').map((line, i) => (
                           <p key={i}>{line}</p>
                         ))}
