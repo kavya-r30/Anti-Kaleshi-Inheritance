@@ -1,74 +1,59 @@
-import React, { useState } from 'react';
-import { data } from '../data';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-} from 'chart.js';
+import React, { useState, useMemo } from 'react';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, 
+  LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
+ChartJS.register( 
+  CategoryScale, LinearScale, PointElement, LineElement, 
+  Title, Tooltip, Legend, Filler
 );
 
-const platformConfigs = {
-  leetcode: {
-    data: data.leetcode.contests.history.map(contest => ({
-      contest: contest.title.replace('Contest ', ''),
-      rating: Number(contest.rating.toFixed(3)),
-      date: new Date(contest.startTime * 1000).toLocaleDateString('en-US', { 
-        month: 'short', 
-        year: 'numeric' 
-      })
-    })),
-    color: '#4CAF50',
-    label: 'LeetCode',
-    bgColor: 'rgba(76, 175, 80, 0.05)'
-  },
-  codeforces: {
-    data: data.codeforces.contests.map(contest => ({
-      contest: contest.contestName.replace('Codeforces ', ''),
-      rating: contest.newRating,
-      date: new Date(contest.contestId * 1000).toLocaleDateString('en-US', {
-        month: 'short',
-        year: 'numeric'
-      })
-    })),
-    color: '#2196F3',
-    label: 'Codeforces',
-    bgColor: 'rgba(33, 150, 243, 0.05)'
-  },
-  codechef: {
-    data: data.codechef.contests.map(contest => ({
-      contest: contest.code,
-      rating: Number(contest.rating),
-      date: new Date(contest.code.match(/\d+/)[0] * 1000).toLocaleDateString('en-US', {
-        month: 'short',
-        year: 'numeric'
-      })
-    })),
-    color: '#FF9800',
-    label: 'CodeChef',
-    bgColor: 'rgba(255, 152, 0, 0.05)'
-  }
-};
-
-const RatingTrends = ({ className = "" }) => {
+const RatingTrends = (userData) => {
   const [activePlatform, setActivePlatform] = useState('leetcode');
+  const memoizedData = useMemo(() => userData.userData || {}, [userData]);
+
+  const platformConfigs = {
+    leetcode: {
+      data: (memoizedData?.leetcode?.contests?.history || []).map(contest => ({
+        contest: (contest?.title || 'Contest').replace('Contest ', ''),
+        rating: Number((contest?.rating || 0).toFixed(3)),
+        date: new Date((contest?.startTime || 0) * 1000).toLocaleDateString('en-US', { 
+          month: 'short', 
+          year: 'numeric' 
+        })
+      })),
+      color: '#4CAF50',
+      label: 'LeetCode',
+      bgColor: 'rgba(76, 175, 80, 0.05)'
+    },
+    codeforces: {
+      data: (memoizedData?.codeforces?.contests || []).map(contest => ({
+        contest: (contest?.contestName || 'Contest').replace('Codeforces ', ''),
+        rating: contest?.newRating || 0,
+        date: new Date((contest?.contestId || 0) * 1000).toLocaleDateString('en-US', {
+          month: 'short',
+          year: 'numeric'
+        })
+      })),
+      color: '#2196F3',
+      label: 'Codeforces',
+      bgColor: 'rgba(33, 150, 243, 0.05)'
+    },
+    codechef: {
+      data: (memoizedData?.codechef?.contests || []).map(contest => ({
+        contest: contest?.code || 'Contest',
+        rating: Number(contest?.rating || 0),
+        date: new Date(((contest?.code || '0').match(/\d+/)?.[0] || 0) * 1000).toLocaleDateString('en-US', {
+          month: 'short',
+          year: 'numeric'
+        })
+      })),
+      color: '#FF9800',
+      label: 'CodeChef',
+      bgColor: 'rgba(255, 152, 0, 0.05)'
+    }
+  };
 
   const options = {
     responsive: true,
@@ -96,10 +81,10 @@ const RatingTrends = ({ className = "" }) => {
         },
         callbacks: {
           title: function(context) {
-            return context[0].raw.toFixed(0) + ' Rating';
+            return (context[0]?.raw || 0).toFixed(0) + ' Rating';
           },
           label: function(context) {
-            return context.label;
+            return context?.label || '';
           }
         }
       }
@@ -143,12 +128,14 @@ const RatingTrends = ({ className = "" }) => {
     }
   };
 
+  const currentPlatformData = platformConfigs[activePlatform]?.data || [];
+
   const data = {
-    labels: platformConfigs[activePlatform].data.map(item => item.contest),
+    labels: currentPlatformData.map(item => item?.contest || ''),
     datasets: [
       {
         label: 'Rating',
-        data: platformConfigs[activePlatform].data.map(item => item.rating),
+        data: currentPlatformData.map(item => item?.rating || 0),
         fill: 'origin',
         borderColor: 'rgb(192, 138, 219)',
         backgroundColor: "rgba(192, 138, 219, 0.4)",
@@ -158,18 +145,19 @@ const RatingTrends = ({ className = "" }) => {
   };
 
   const getLatestData = () => {
-    const data = platformConfigs[activePlatform].data;
-    return data[data.length - 1];
+    const data = platformConfigs[activePlatform]?.data || [];
+    return data[data.length - 1] || { rating: 0 };
   };
 
   const getRatingChange = () => {
-    const ratings = platformConfigs[activePlatform].data.map(item => item.rating);
+    const ratings = platformConfigs[activePlatform]?.data.map(item => item?.rating || 0) || [];
+    if (ratings.length < 2) return '0.0';
     const change = ratings[ratings.length - 1] - ratings[ratings.length - 2];
     return change.toFixed(1);
   };
 
   return (
-    <div className={`${className} bg-white w-full mx-auto shadow-lg rounded-xl overflow-hidden
+    <div className={`bg-white w-full mx-auto shadow-lg rounded-xl overflow-hidden
                     transition-all duration-300 ease-in-out hover:shadow-xl`}>
       <div className="px-8 pt-7 pb-4">
         <div className="grid grid-cols-3 items-center">
@@ -179,20 +167,20 @@ const RatingTrends = ({ className = "" }) => {
                 {getLatestData().rating.toFixed(0)}
               </div>
               <div className={`flex items-center space-x-1 px-2 py-1 rounded-lg ${
-                getRatingChange() >= 0 
+                Number(getRatingChange()) >= 0 
                   ? 'bg-green-50' 
                   : 'bg-red-50'
               }`}>
-                {getRatingChange() >= 0 
+                {Number(getRatingChange()) >= 0 
                   ? <TrendingUp className="w-4 h-4 text-green-600" />
                   : <TrendingDown className="w-4 h-4 text-red-600" />
                 }
                 <span className={`text-sm font-semibold ${
-                  getRatingChange() >= 0 
+                  Number(getRatingChange()) >= 0 
                     ? 'text-green-600' 
                     : 'text-red-600'
                 }`}>
-                  {getRatingChange() >= 0 ? '+' : ''}{getRatingChange()}
+                  {Number(getRatingChange()) >= 0 ? '+' : ''}{getRatingChange()}
                 </span>
               </div>
             </div>
