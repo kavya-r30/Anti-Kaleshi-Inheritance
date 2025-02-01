@@ -6,6 +6,7 @@ const DSAQuestions = () => {
   const [error, setError] = useState(null);
   const [selectedTopics, setSelectedTopics] = useState([]); // State for selected topics
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
+  const [showTopics, setShowTopics] = useState(false); // State to toggle visibility of topic names
 
   const topics = [
     'Array', 'Matrix', 'String', 'Searching & Sorting', 'LinkedList', 'Binary Trees', 'Binary Search Trees',
@@ -68,6 +69,10 @@ const DSAQuestions = () => {
     return matchesTopic && matchesSearch;
   });
 
+  const toggleTopics = () => {
+    setShowTopics(prevState => !prevState); // Toggle visibility of topics
+  };
+
   if (loading) {
     return (
       <div className="bg-purple-50 flex w-full h-screen items-center justify-center p-8">
@@ -109,25 +114,34 @@ const DSAQuestions = () => {
           />
         </div>
 
-        {/* Filter Checkboxes */}
+        {/* Filter by Topics */}
         <div className="mb-6">
-          <label className="block text-purple-600 font-semibold mb-2">Filter by Topics</label>
-          <div className="flex flex-wrap">
-            {topics.map((topic, index) => (
-              <div key={index} className="mr-4 mb-2">
-                <label className="inline-flex items-center text-purple-600">
-                  <input
-                    type="checkbox"
-                    value={topic}
-                    checked={selectedTopics.includes(topic)}
-                    onChange={handleTopicChange}
-                    className="form-checkbox text-purple-600"
-                  />
-                  <span className="ml-2">{topic}</span>
-                </label>
-              </div>
-            ))}
-          </div>
+          <label 
+            onClick={toggleTopics}
+            className="cursor-pointer block text-purple-600 font-semibold mb-2"
+          >
+            Filter by Topics
+          </label>
+
+          {/* Display Topics only if the section is toggled */}
+          {showTopics && (
+            <div className="flex flex-wrap">
+              {topics.map((topic, index) => (
+                <div key={index} className="mr-4 mb-2">
+                  <label className="inline-flex items-center text-purple-900 font-semibold">
+                    <input
+                      type="checkbox"
+                      value={topic}
+                      checked={selectedTopics.includes(topic)}
+                      onChange={handleTopicChange}
+                      className="form-checkbox text-purple-600"
+                    />
+                    <span className="ml-2">{topic}</span>
+                  </label>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
