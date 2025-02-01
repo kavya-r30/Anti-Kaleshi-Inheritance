@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { data } from '../data'
+import React, { useState, useEffect, useMemo } from 'react';
+// import { data } from '../data'
 import { Trophy, Code2, Target } from 'lucide-react';
 
-export const Header = () => {
+export const Header = (userData) => {
     const [isVisible, setIsVisible] = useState(false);
+    const data = useMemo(() => userData.userData, [userData]);
 
-    const totalSolved = ( data.leetcode?.profile?.totalSolved || 0 ) + ( data.codeforces?.profile?.totalSolved || 0 ) +
-                        ( data.codechef?.profile?.totalSolved || 0 ) + ( data.geeksforgeeks?.profile?.totalSolved || 0 );
+    const totalSolved = ( data?.leetcode?.profile?.totalSolved || 0 ) + ( data?.codeforces?.profile?.totalSolved || 0 ) +
+                        ( data?.codechef?.profile?.totalSolved || 0 ) + ( data?.geeksforgeeks?.profile?.totalSolved || 0 );
 
     let totalSubmission = data?.codeforces?.profile?.totalSubmissions || 0;
     Object.values(data?.heatmap)?.forEach(timestamp => {
