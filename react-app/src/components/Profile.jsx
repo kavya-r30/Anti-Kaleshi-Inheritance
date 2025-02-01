@@ -85,14 +85,10 @@ const ProfilePage = () => {
       setLoading(true);
       console.log('Current cookies:', document.cookie);
 
-      const response = await fetch(`${backendUrl}/api/profile`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await axios.get(`${backendUrl}/api/profile`, {
+        withCredentials: true
       });
-
+      
       console.log('Profile response:', response.data);
       const { profile } = response.data;
       
