@@ -1,9 +1,9 @@
-import React from 'react';
-import { data } from '../data';
+import { React, useMemo } from 'react';
 import default_badge from '../../assets/code.png';
 
-const BadgesDisplay = () => {
-  const badges =  data?.leetcode?.badges;
+const BadgesDisplay = (userData) => {
+  const data = useMemo(() => userData.userData, [userData]);
+  const badges =  data?.leetcode?.badges || {};
 
   const visible_badges = 4;
 
