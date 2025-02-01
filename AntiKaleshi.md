@@ -147,7 +147,7 @@ Add names of your team members with their emails and links to their GitHub accou
 - [Team Member 1 Kavya Rambhia](https://github.com/kavya-r30): kavyarambhia07@gmail.com
 - [Team Member 2 Kevin Shah](): 143kevinshah@gmail.com
 - [Team Member 3 Mihir Katakdhond](https://github.com/mihir-k64): mihirkatakdhond@gmail.com
-- [Team Member 3 Swayam Shah](https://github.com/Sonu0305): aj230375@gmail.com
+- [Team Member 3 Swayam Shah](https://github.com/Sonu0305): swayamshah66@gmail.com
   
 ## 👨‍🏫Mentors
 
