@@ -10,7 +10,8 @@ import ChatBot from './components/Chatbot';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { Devboard } from './components/Devboard';
-import DSAQuestions from './components/DSAQuestions';  // New import
+import DSAQuestions from './components/DSAQuestions';
+import CommunityDiscussions from './components/CommunityDiscussions'; // Import the discussion component
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -50,9 +51,9 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/contest-tracker' element={<ContestTracker />} />
           <Route path='/chatbot' element={<ChatBot />} />
-          <Route path='/discussion' element={<h1>Discussion</h1>} />
+          <Route path='/discussion' element={<CommunityDiscussions />} /> {/* Updated route */}
           <Route path='/devboard' element={<Devboard />} />
-          <Route path='/dsa-questions' element={<DSAQuestions />} /> {/* New route */}
+          <Route path='/dsa-questions' element={<DSAQuestions />} />
           <Route
             path='/dashboard'
             element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
