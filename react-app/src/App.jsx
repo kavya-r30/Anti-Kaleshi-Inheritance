@@ -11,7 +11,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import { Devboard } from './components/Devboard';
 import DSAQuestions from './components/DSAQuestions';
-import CommunityDiscussions from './components/CommunityDiscussions'; // Import the discussion component
+import CommunityDiscussions from './components/CommunityDiscussions'; // ✅ Import added
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -19,27 +19,23 @@ function App() {
   );
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await fetch('http://localhost:5001/auth/check', {
-          credentials: 'include',
-        });
-        if (res.ok) {
-          const data = await res.json();
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    try {
+      fetch(`${backendUrl}/auth/check`, { credentials: 'include' })
+        .then((res) => res.json())
+        .then((data) => {
           setIsAuthenticated(data.isAuthenticated);
           localStorage.setItem('isAuthenticated', data.isAuthenticated);
-        } else {
+        })
+        .catch(() => {
           setIsAuthenticated(false);
           localStorage.removeItem('isAuthenticated');
-        }
-      } catch (err) {
-        console.error('Error checking authentication:', err);
-        setIsAuthenticated(false);
-        localStorage.removeItem('isAuthenticated');
-      }
-    };
-
-    checkAuth();
+        });
+    } catch (err) {
+      console.error('Error checking authentication:', err);
+      setIsAuthenticated(false);
+      localStorage.removeItem('isAuthenticated');
+    }
   }, []);
 
   return (
@@ -51,7 +47,7 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/contest-tracker' element={<ContestTracker />} />
           <Route path='/chatbot' element={<ChatBot />} />
-          <Route path='/discussion' element={<CommunityDiscussions />} /> {/* Updated route */}
+          <Route path='/discussion' element={<CommunityDiscussions />} /> {/* ✅ Updated route */}
           <Route path='/devboard' element={<Devboard />} />
           <Route path='/dsa-questions' element={<DSAQuestions />} />
           <Route

@@ -3,7 +3,7 @@ import { LogOut, Edit2, Save, Check, Trash2 } from 'lucide-react';
 import axios from 'axios';
 
 const LoadingSpinner = () => (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div className="fixed inset-0 bg-black bg-opacity-5 flex items-center justify-center z-50">
     <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
   </div>
 );
@@ -80,9 +80,10 @@ const ProfilePage = () => {
   }, []);
 
   const fetchProfile = async () => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5001/api/profile', {
+      const response = await axios.get(`${backendUrl}/api/profile`, {
         withCredentials: true
       });
       
@@ -111,8 +112,9 @@ const ProfilePage = () => {
   };
 
   const handleLogout = async () => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     try {
-      await axios.get('http://localhost:5001/auth/logout', {
+      await axios.get(`${backendUrl}/auth/logout`, {
         withCredentials: true
       });
       window.location.href = '/login';
@@ -123,9 +125,10 @@ const ProfilePage = () => {
   };
 
   const saveProfile = async () => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     try {
       setLoading(true);
-      await axios.put('http://localhost:5001/api/profile/update', {
+      await axios.put(`${backendUrl}/api/profile/update`, {
         platforms: platformUsernames,
         socialLinks,
         bio: bioText,
