@@ -11,6 +11,7 @@ import Login from './components/login';
 import Signup from './components/signup';
 import { Devboard } from './components/Devboard';
 import DSAQuestions from './components/DSAQuestions';
+import CommunityDiscussions from './components/Dicussion';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -51,7 +52,7 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/contest-tracker' element={<ContestTracker />} />
           <Route path='/chatbot' element={<ChatBot />} />
-          <Route path='/discussion' element={<h1>Discussion</h1>} />
+          <Route path='/discussion' element={<CommunityDiscussions />} />
           <Route path='/devboard' element={<Devboard />} />
           <Route path='/dsa-questions' element={<DSAQuestions />} />
           <Route
