@@ -141,23 +141,21 @@ $ git clone https://github.com/kavya-r30/Anti-Kaleshi-Inheritance.git
   
 ## 👨‍💻Team Members
 
-Add names of your team members with their emails and links to their GitHub accounts
 - [Team Member 1 Kavya Rambhia](https://github.com/kavya-r30): kavyarambhia07@gmail.com
-- [Team Member 2 Kevin Shah](): 143kevinshah@gmail.com
+- [Team Member 2 Kevin Shah](https://github.com/kevinzb56): 143kevinshah@gmail.com
 - [Team Member 3 Mihir Katakdhond](https://github.com/mihir-k64): mihirkatakdhond@gmail.com
-- [Team Member 3 Swayam Shah](https://github.com/Sonu0305): swayamshah66@gmail.com
+- [Team Member 4 Swayam Shah](https://github.com/Sonu0305): swayamshah66@gmail.com
   
 ## 👨‍🏫Mentors
 
-Add names of your mentors with their emails and links to their GitHub accounts
-- [Team Member 1 Aaditya Jayant Padte](https://github.com/Aaditya8C): aadityajp0419@gmail.com
-- [Team Member 3 Aniket Suresh Jadhav](https://github.com/DevAniket010): aj230375@gmail.com
+- [Aaditya Jayant Padte](https://github.com/Aaditya8C): aadityajp0419@gmail.com
+- [Aniket Suresh Jadhav](https://github.com/DevAniket010): aj230375@gmail.com
 
 ## 📱Screenshots
+![Screenshot](https://drive.google.com/uc?export=view&id=1rxislqKigCFPhtAJqNbgKGlvK4O1G1ia)
+![Screenshot](https://drive.google.com/uc?export=view&id=1k-z7j7de8ZBDaFq84PyZteakWbJvN_l2)
 ![Screenshot](https://drive.google.com/uc?export=view&id=1woRXCUYGKQElil4Dgj63bVc7yyqu0Zpy)
 ![Screenshot](https://drive.google.com/uc?export=view&id=1h6J-gnhCaVDroFSF50i3s8-O5gDM3u6u)
-![Screenshot](https://drive.google.com/uc?export=view&id=1rxislqKigCFPhtAJqNbgKGlvK4O1G1ia)
 ![Screenshot](https://drive.google.com/uc?export=view&id=1gosE8xp9DMwWi901E8Wd0mk8vjM0kYwO)
-![Screenshot](https://drive.google.com/uc?export=view&id=1k-z7j7de8ZBDaFq84PyZteakWbJvN_l2)
 
 https://drive.google.com/file/d/1woRXCUYGKQElil4Dgj63bVc7yyqu0Zpy/view
