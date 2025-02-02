@@ -1,183 +1,5 @@
-// import React, { useState } from 'react';
-// import './Discussion.css';
-
-// const CommunityDiscussions = () => {
-//   const [threads, setThreads] = useState([
-//     {
-//       id: 1,
-//       title: "How to implement async/await in React?",
-//       author: "devUser123",
-//       content: "I'm trying to fetch data using async/await within useEffect, but I'm getting errors. Here's my code...",
-//       votes: 15,
-//       replies: [
-//         {
-//           id: 1,
-//           author: "seniorDev",
-//           content: "You should wrap your async code in an IIFE. Here's an example...",
-//           votes: 8,
-//           isAnswer: true
-//         }
-//       ],
-//       timestamp: "2 hours ago"
-//     },
-//     {
-//       id: 2,
-//       title: "How to optimize React performance?",
-//       author: "coderGuy456",
-//       content: "I am having performance issues with my React app. Any tips on how to optimize the performance?",
-//       votes: 10,
-//       replies: [
-//         {
-//           id: 1,
-//           author: "techGuru789",
-//           content: "You can use React.memo and useCallback to optimize your components. Also, lazy loading components is helpful.",
-//           votes: 5,
-//           isAnswer: false
-//         }
-//       ],
-//       timestamp: "1 day ago"
-//     },
-//     {
-//       id: 3,
-//       title: "What is the best way to manage state in React?",
-//       author: "reactExpert112",
-//       content: "I’ve tried useState, but I’m considering using Redux or Context API. Which one do you think is better for state management?",
-//       votes: 22,
-//       replies: [],
-//       timestamp: "3 days ago"
-//     },
-//     {
-//       id: 4,
-//       title: "How to handle authentication in React?",
-//       author: "frontEndDev",
-//       content: "Can anyone suggest the best way to handle user authentication in React? Should I use Firebase or something custom?",
-//       votes: 12,
-//       replies: [],
-//       timestamp: "1 week ago"
-//     }
-//   ]);
-
-//   const [newReply, setNewReply] = useState("");
-//   const [visibleReplies, setVisibleReplies] = useState({});
-
-//   const handleVote = (threadId, replyId = null, isUpvote) => {
-//     setThreads(prevThreads => {
-//       return prevThreads.map(thread => {
-//         if (thread.id === threadId) {
-//           if (replyId === null) {
-//             return {
-//               ...thread,
-//               votes: thread.votes + (isUpvote ? 1 : -1)
-//             };
-//           } else {
-//             return {
-//               ...thread,
-//               replies: thread.replies.map(reply => {
-//                 if (reply.id === replyId) {
-//                   return {
-//                     ...reply,
-//                     votes: reply.votes + (isUpvote ? 1 : -1)
-//                   };
-//                 }
-//                 return reply;
-//               })
-//             };
-//           }
-//         }
-//         return thread;
-//       });
-//     });
-//   };
-
-//   const handleNewReply = (threadId) => {
-//     if (!newReply.trim()) return;
-
-//     setThreads(prevThreads => {
-//       return prevThreads.map(thread => {
-//         if (thread.id === threadId) {
-//           return {
-//             ...thread,
-//             replies: [...thread.replies, {
-//               id: thread.replies.length + 1,
-//               author: "currentUser",
-//               content: newReply,
-//               votes: 0,
-//               isAnswer: false
-//             }]
-//           };
-//         }
-//         return thread;
-//       });
-//     });
-//     setNewReply("");
-//   };
-
-//   const toggleRepliesVisibility = (threadId) => {
-//     setVisibleReplies(prev => ({
-//       ...prev,
-//       [threadId]: !prev[threadId]
-//     }));
-//   };
-
-//   return (
-//     <div className="discussion-container">
-//       {threads.map(thread => (
-//         <div key={thread.id} className="discussion-card">
-//           <div className="discussion-header" onClick={() => toggleRepliesVisibility(thread.id)}>
-//             <h2>{thread.title}</h2>
-//             <div className="discussion-meta">
-//               <span>{thread.author}</span>
-//               <span>{thread.timestamp}</span>
-//             </div>
-//           </div>
-
-//           <p className="discussion-content">{thread.content}</p>
-
-//           <div className="voting-section">
-//             <button onClick={() => handleVote(thread.id, null, true)}>👍</button>
-//             <span>{thread.votes}</span>
-//             <button onClick={() => handleVote(thread.id, null, false)}>👎</button>
-//           </div>
-
-//           {visibleReplies[thread.id] && (
-//             <div className="replies-section">
-//               <h3>Replies</h3>
-//               {thread.replies.map(reply => (
-//                 <div key={reply.id} className={`reply-card ${reply.isAnswer ? 'best-answer' : ''}`}>
-//                   <div className="reply-header">
-//                     <span className="reply-author">{reply.author}</span>
-//                     {reply.isAnswer && <span className="answer-badge">Best Answer</span>}
-//                   </div>
-//                   <p className="reply-content">{reply.content}</p>
-//                   <div className="voting-section">
-//                     <button onClick={() => handleVote(thread.id, reply.id, true)}>👍</button>
-//                     <span>{reply.votes}</span>
-//                     <button onClick={() => handleVote(thread.id, reply.id, false)}>👎</button>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//           )}
-
-//           <div className="reply-form">
-//             <textarea
-//               value={newReply}
-//               onChange={(e) => setNewReply(e.target.value)}
-//               placeholder="Write your reply..."
-//             />
-//             <button onClick={() => handleNewReply(thread.id)}>Post Reply</button>
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default CommunityDiscussions;
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Discussion.css";
 
 const API_URL = "http://localhost:5000/comm";
 
@@ -211,7 +33,7 @@ const CommunityDiscussions = () => {
     const discussion = {
       title: newDiscussion.title,
       content: newDiscussion.content,
-      author: "currentUser ",
+      author: "currentUser",
       votes: 0,
       replies: [],
       timestamp: new Date().toISOString(),
@@ -247,17 +69,14 @@ const CommunityDiscussions = () => {
     if (!replyInputs[threadId]?.trim()) return;
 
     const reply = {
-      author: "currentUser ",
+      author: "currentUser",
       content: replyInputs[threadId],
       votes: 0,
       isAnswer: false,
     };
 
     try {
-      const response = await axios.post(
-        `${API_URL}/${threadId}/replies`,
-        reply
-      );
+      const response = await axios.post(`${API_URL}/${threadId}/replies`, reply);
       setThreads((prevThreads) =>
         prevThreads.map((thread) =>
           thread._id === threadId ? response.data : thread
@@ -278,10 +97,10 @@ const CommunityDiscussions = () => {
   };
 
   return (
-    <div className="discussion-container">
-      <div className="discussions-header">
+    <div className="p-6 bg-purple-50 min-h-screen">
+      <div className="mb-6">
         <button
-          className="new-discussion-btn"
+          className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
           onClick={() => setShowNewDiscussion(true)}
         >
           + New Discussion
@@ -289,8 +108,8 @@ const CommunityDiscussions = () => {
       </div>
 
       {showNewDiscussion && (
-        <div className="new-discussion-form">
-          <h2>Start a New Discussion</h2>
+        <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+          <h2 className="text-2xl font-bold mb-4">Start a New Discussion</h2>
           <form onSubmit={handleNewDiscussion}>
             <input
               type="text"
@@ -299,7 +118,7 @@ const CommunityDiscussions = () => {
               onChange={(e) =>
                 setNewDiscussion({ ...newDiscussion, title: e.target.value })
               }
-              className="form-input"
+              className="w-full p-2 mb-4 border rounded"
             />
             <textarea
               placeholder="What would you like to discuss?"
@@ -307,15 +126,18 @@ const CommunityDiscussions = () => {
               onChange={(e) =>
                 setNewDiscussion({ ...newDiscussion, content: e.target.value })
               }
-              className="form-textarea"
+              className="w-full p-2 mb-4 border rounded"
             />
-            <div className="form-actions">
-              <button type="submit" className="submit-btn">
+            <div className="flex gap-2">
+              <button
+                type="submit"
+                className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+              >
                 Post Discussion
               </button>
               <button
                 type="button"
-                className="cancel-btn"
+                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
                 onClick={() => setShowNewDiscussion(false)}
               >
                 Cancel
@@ -326,21 +148,23 @@ const CommunityDiscussions = () => {
       )}
 
       {threads.map((thread) => (
-        <div key={thread._id} className="discussion-card">
+        <div key={thread._id} className="bg-white p-6 rounded-lg shadow-md mb-6">
           <div
-            className="discussion-header"
+            className="cursor-pointer"
             onClick={() => toggleRepliesVisibility(thread._id)}
           >
-            <h2>{thread.title}</h2>
-            <div className="discussion-meta">
+            <h2 className="text-xl font-bold">{thread.title}</h2>
+            <div className="text-sm text-gray-600">
               <span>{thread.author}</span>
-              <span>{new Date(thread.timestamp).toLocaleString()}</span>
+              <span className="ml-2">
+                {new Date(thread.timestamp).toLocaleString()}
+              </span>
             </div>
           </div>
 
-          <p className="discussion-content">{thread.content}</p>
+          <p className="mt-4">{thread.content}</p>
 
-          <div className="voting-section">
+          <div className="flex gap-2 mt-4">
             <button onClick={() => handleVote(thread._id, null, true)}>
               👍
             </button>
@@ -351,23 +175,25 @@ const CommunityDiscussions = () => {
           </div>
 
           {visibleReplies[thread._id] && (
-            <div className="replies-section">
-              <h3>Replies</h3>
+            <div className="mt-4">
+              <h3 className="text-lg font-bold mb-2">Replies</h3>
               {thread.replies.map((reply) => (
                 <div
                   key={reply._id}
-                  className={`reply-card ${
-                    reply.isAnswer ? "best-answer" : ""
-                  }`}
+                  className={`p-4 rounded-lg ${
+                    reply.isAnswer ? "bg-green-50" : "bg-gray-50"
+                  } mb-2`}
                 >
-                  <div className="reply-header">
-                    <span className="reply-author">{reply.author}</span>
+                  <div className="flex items-center">
+                    <span className="font-bold">{reply.author}</span>
                     {reply.isAnswer && (
-                      <span className="answer-badge">Best Answer</span>
+                      <span className="bg-green-500 text-white px-2 py-1 rounded-full text-sm ml-2">
+                        Best Answer
+                      </span>
                     )}
                   </div>
-                  <p className="reply-content">{reply.content}</p>
-                  <div className="voting-section">
+                  <p className="mt-2">{reply.content}</p>
+                  <div className="flex gap-2 mt-2">
                     <button
                       onClick={() => handleVote(thread._id, reply._id, true)}
                     >
@@ -385,15 +211,16 @@ const CommunityDiscussions = () => {
             </div>
           )}
 
-          <div className="reply-form">
+          <div className="mt-4">
             <textarea
               value={replyInputs[thread._id] || ""}
               onChange={(e) => handleInputChange(thread._id, e.target.value)}
               placeholder="Write your reply..."
+              className="w-full p-2 border rounded"
             />
             <button
               onClick={() => handleNewReply(thread._id)}
-              className="submit-btn"
+              className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 mt-2"
             >
               Post Reply
             </button>

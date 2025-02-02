@@ -357,18 +357,18 @@ function App() {
               Community Discussions
             </li>
             <li 
-              className={activeTab === 'study-guide' ? 'active' : ''} 
-              onClick={() => setActiveTab('study-guide')}
-            >
-              <span className="nav-icon">📚</span>
-              Learning Resources
-            </li>
-            <li 
               className={activeTab === 'career' ? 'active' : ''} 
               onClick={() => setActiveTab('career')}
             >
               <span className="nav-icon">💼</span>
               Career
+            </li>
+            <li 
+              className={activeTab === 'study-guide' ? 'active' : ''} 
+              onClick={() => setActiveTab('study-guide')}
+            >
+              <span className="nav-icon">📚</span>
+              Learning Resources
             </li>
             <li 
               className={activeTab === 'support' ? 'active' : ''} 
